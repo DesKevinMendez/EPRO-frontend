@@ -1,3 +1,5 @@
 module.exports = {
-    publicPath: '<EPRO>'
+
+    publicPath: process.env.NODE_ENV === 'production' ? '/EPRO-front-end/' : '/'
+
 } 
