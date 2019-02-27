@@ -25,8 +25,8 @@
               label="E-mail"
               required
             ></v-text-field>
-
             <v-btn :disabled="proceso" color="success" @click="enviarDatos(user)">Login</v-btn>
+            <Procesando v-if="proceso"/>
           </v-form>
         </v-card-text>
       </v-slide-y-transition>

@@ -1,82 +1,56 @@
 <template>
-  <md-card md-with-hover>
-    <md-ripple>
-      <md-card-header>
-        <div class="md-title">Registráte</div>
-      </md-card-header>
-      <md-card-content>
-        <form v-on:submit.prevent="enviarDatos(user)">
-          <div class="form-group">
-            <md-field md-clearable>
-              <label>Nombre</label>
-              <md-input
-                id="name"
-                type="name"
-                class="form-control"
-                name="name"
-                v-model="user.name"
-                autofocus
-                placeholder="Nombre"
-              ></md-input>
-            </md-field>
+  <div>
+    <v-card>
+      <v-card-title primary-title>
+        <div>
+          <div class="headline">Inicia sesión</div>
+        </div>
+      </v-card-title>
+
+      <v-slide-y-transition>
+        <v-card-text>
+          <v-form ref="form" lazy-validation>
+            <v-text-field
+              name="name"
+              :rules="nameRules"
+              v-model="user.name"
+              label="Nombre"
+              required
+            ></v-text-field>
             <span style="color: red;" v-if="errores.name">{{ errores.name[0] }}</span>
-          </div>
-          <div class="form-group">
-            <md-field md-clearable>
-              <label>Email</label>
-              <md-input
-                id="email"
-                type="email"
-                class="form-control"
-                name="email"
-                v-model="user.email"
-                autofocus
-                placeholder="Correo electrónico"
-              ></md-input>
-            </md-field>
-
+            <v-text-field
+              name="email"
+              v-model="user.email"
+              :rules="emailRules"
+              type="email"
+              label="E-mail"
+              required
+            ></v-text-field>
             <span style="color: red;" v-if="errores.email">{{ errores.email[0] }}</span>
-          </div>
-
-          <div class="form-group">
-            <md-field md-clearable>
-              <label>Password</label>
-              <md-input
-                id="password"
-                type="password"
-                class="form-control"
-                name="password"
-                v-model="user.password"
-                placeholder="Contraseña"
-              ></md-input>
-            </md-field>
-
+            <v-text-field
+              type="password"
+              name="name"
+              :rules="passwrodRules"
+              v-model="user.password"
+              label="Password"
+              required
+            ></v-text-field>
             <span style="color: red;" v-if="errores.password">{{ errores.password[0] }}</span>
-          </div>
-          <div class="form-group">
-            <md-field md-clearable>
-              <label>Confirmar Password</label>
-              <md-input
-                id="password"
-                type="password"
-                class="form-control"
-                name="password_confirmation"
-                v-model="user.password_confirmation"
-                placeholder="Contraseña"
-              ></md-input>
-            </md-field>
-          </div>
-          <div class="form-group mb-0" v-if="proceso">
-            <md-button class="md-raised" disabled>Registrarse</md-button>
-            <Procesando/>
-          </div>
-          <div class="form-group mb-0" v-else>
-            <md-button class="md-raised md-primary" type="submit">Registrarse</md-button>
-          </div>
-        </form>
-      </md-card-content>
-    </md-ripple>
-  </md-card>
+            <v-text-field
+              :rules="passwrodRules"
+              type="password"
+              name="password_confirmation"
+              v-model="user.password_confirmation"
+              label="Confirmar contraseña"
+              required
+            ></v-text-field>
+            <v-btn :disabled="proceso" color="success" @click="enviarDatos(user)">Registrarse</v-btn>
+            <Procesando v-if="proceso"/>
+          </v-form>
+        </v-card-text>
+      </v-slide-y-transition>
+    </v-card>
+  </div>
 </template>
 
 <script lang="ts">
@@ -95,7 +69,16 @@ export default class login extends Vue {
         email: "",
         password: "",
         password_confirmation: ""
-      }
+      },
+      passwrodRules: [
+        v => !!v || "Password is required",
+        v => (v && v.length <= 6) || "Name must be less than 10 characters"
+      ],
+      emailRules: [
+        v => !!v || "E-mail is required",
+        v => /.+@.+/.test(v) || "E-mail must be valid"
+      ],
+      nameRules: [v => !!v || "Name is required"]
     };
   }
   enviarDatos(user: object) {
