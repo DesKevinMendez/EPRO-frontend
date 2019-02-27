@@ -40,7 +40,7 @@ import { Action, Getter } from "vuex-class";
 import Procesando from "@/components/partials/proceso.vue";
 import Errores from "@/components/partials/errores.vue";
 @Component({
-  name: "formulario-login",
+  name: "formularioLogin",
   components: { Procesando, Errores }
 })
 export default class login extends Vue {

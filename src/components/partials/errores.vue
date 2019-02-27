@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "proceso",
+  name: "Errores",
   props: ["error"]
 };
 </script>

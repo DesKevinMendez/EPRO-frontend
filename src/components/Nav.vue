@@ -88,7 +88,10 @@ export default class Navbar extends Vue {
       drawer: false,
       logeados: [
         { title: "Home", icon: "dashboard", ruta: "/" },
-        { title: "About", icon: "question_answer", ruta: "/about" }
+        { title: "About", icon: "question_answer", ruta: "/about" },
+        { title: "Historial", icon: "question_answer", ruta: "/about" },
+        { title: "Mi QR", icon: "question_answer", ruta: "/about" },
+        { title: "Aranceles", icon: "question_answer", ruta: "/about" }
       ],
       nologged: [
         { title: "Login", icon: "dashboard", ruta: "/login" },
