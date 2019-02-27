@@ -12,8 +12,9 @@
         <v-list style="margin-top: 4rem;" transition="scale-transition">
           <v-list-tile>
             <v-list-tile-title style="text-align:center">
-              <v-icon>account_circle</v-icon>
-              <router-link class="nav-link" to="perfil">Ver mi perfil</router-link>
+              <router-link class="nav-link" to="perfil">
+                <v-icon>account_circle</v-icon>Ver mi perfil
+              </router-link>
             </v-list-tile-title>
           </v-list-tile>
           <v-list-tile>
@@ -69,22 +70,7 @@ import NoLogeados from "@/components/navs/NoLogeados.vue";
 export default class Navbar extends Vue {
   data() {
     return {
-      drawer: false,
-
-      nologged: [
-        {
-          icon: "https",
-          iconClass: "blue white--text",
-          title: "Login",
-          ruta: "/login"
-        },
-        {
-          icon: "input",
-          iconClass: "amber white--text",
-          title: "Registrarse",
-          ruta: "/registro"
-        }
-      ]
+      drawer: false
     };
   }
   cerrarSesion() {
@@ -97,7 +83,7 @@ export default class Navbar extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .md-list {
   width: 320px;
   max-width: 100%;
@@ -114,7 +100,7 @@ export default class Navbar extends Vue {
     align-self: center;
   }
   &:hover {
-    background: red !important;
+    background: #e3f2fd !important;
   }
 }
 </style>

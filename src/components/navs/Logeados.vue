@@ -49,12 +49,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.nav-link {
-  text-decoration: none;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  align-self: center;
-}
-</style>
