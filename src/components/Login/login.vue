@@ -22,7 +22,7 @@
               v-model="user.password"
               :rules="passwrodRules"
               type="password"
-              label="E-mail"
+              label="Password"
               required
             ></v-text-field>
             <v-btn :disabled="proceso" color="success" @click="enviarDatos(user)">Login</v-btn>
@@ -71,3 +71,6 @@ export default class login extends Vue {
   @Action("authModule/LOGIN") iniciarSesion: any;
 }
 </script>
+
+<style lang="scss">
+</style>

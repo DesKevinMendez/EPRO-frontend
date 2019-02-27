@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'mixins';
+
+@import url('https://use.fontawesome.com/releases/v5.6.1/css/all.css');
+
+html {
+	@include box-sizing(border-box);
+	height: 100%;
+	background: #F7F7F7;
+}
+
+*,
+*:after,
+*:before {
+	@include box-sizing(inherit);
+}
+
+body {
+	font-family: $fuente_principal;
+	height: 100%;
+}
+
+@include phone() {
+	.navigation-drawer {
+		margin-top: 4rem;
+	}
+}
+
+@include desktop() {
+	.navigation-drawer {
+		margin-top: 4.5rem;
+	}
+}

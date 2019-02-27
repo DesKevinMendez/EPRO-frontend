@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <v-toolbar dark color="primary">
+    <v-toolbar dark :app="true" fixed color="primary">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
 
       <v-toolbar-title class="white--text">Parqueo UTEC</v-toolbar-title>
@@ -9,7 +9,7 @@
         <v-btn slot="activator" dark icon>
           <v-icon>more_vert</v-icon>
         </v-btn>
-        <v-list>
+        <v-list style="margin-top: 4rem;" transition="scale-transition">
           <v-list-tile>
             <v-list-tile-title style="text-align:center">Ver mi perfil</v-list-tile-title>
           </v-list-tile>
@@ -23,16 +23,16 @@
     </v-toolbar>
 
     <v-navigation-drawer
+      transition="slide-x-transition"
       v-model="drawer"
       permanent
       absolute
-      style="margin-top: 4.5rem;"
       v-if="drawer"
-      app="true"
-      floating="true"
+      :app="true"
+      light
     >
-      <v-toolbar flat class="transparent" v-if="logged">
-        <v-list class="pa-0">
+      <v-toolbar flat class="transparent" v-if="logged" transition="slide-x-transition">
+        <v-list class="pa-0" color="primary">
           <v-list-tile avatar>
             <v-list-tile-avatar>
               <img src="https://randomuser.me/api/portraits/men/85.jpg">
@@ -58,6 +58,7 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+
       <v-list class="pt-0" dense v-if="!logged">
         <v-divider></v-divider>
         <v-list-tile v-for="item in nologged" :key="item.title">
