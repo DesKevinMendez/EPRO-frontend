@@ -1,38 +1,49 @@
 <template>
-  <form v-on:submit.prevent="enviarDatos(user)">
-    <div class="form-group">
-      <input
-        id="email"
-        type="email"
-        :class="'form-control'"
-        name="email"
-        v-model="user.email"
-        autofocus
-        placeholder="Correo electrónico"
-        required
-      >
-    </div>
+  <md-card md-with-hover>
+    <md-ripple>
+      <md-card-header>
+        <div class="md-title">Inicia sesión</div>
+      </md-card-header>
+      <md-card-content>
+        <form v-on:submit.prevent="enviarDatos(user)" id="login">
+          <md-field md-clearable>
+            <label>Email</label>
+            <md-input
+              id="email"
+              type="email"
+              :class="'form-control'"
+              name="email"
+              v-model="user.email"
+              autofocus
+              placeholder="Correo electrónico"
+              required
+            ></md-input>
+          </md-field>
+          <md-field md-clearable>
+            <label>Contraseña</label>
+            <md-input
+              id="password"
+              type="password"
+              class="form-control"
+              name="password"
+              v-model="user.password"
+              placeholder="Contraseña"
+              required
+            ></md-input>
+          </md-field>
 
-    <div class="form-group">
-      <input
-        id="password"
-        type="password"
-        class="form-control"
-        name="password"
-        v-model="user.password"
-        placeholder="Contraseña"
-        required
-      >
-    </div>
-    <div class="form-group mb-0" v-if="proceso">
-      <input type="submit" class="btn btn-primary" value="Inicia sesión" disabled>
-      <Procesando/>
-    </div>
-    <div class="form-group mb-0" v-else>
-      <input type="submit" class="btn btn-primary" value="Inicia sesión">
-    </div>
-    <Errores v-if="errores.error" :error="errores.error"/>
-  </form>
+          <div class="form-group mb-0" v-if="proceso">
+            <md-button class="md-raised" disabled>Login</md-button>
+            <Procesando/>
+          </div>
+          <div class="form-group mb-0" v-else>
+            <md-button class="md-raised md-primary" type="submit">Login</md-button>
+          </div>
+          <Errores v-if="errores.error" :error="errores.error"/>
+        </form>
+      </md-card-content>
+    </md-ripple>
+  </md-card>
 </template>
 
 <script lang="ts">

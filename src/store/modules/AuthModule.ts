@@ -7,7 +7,7 @@ import store from '@/store';
 axios.defaults.headers.common['Authorization'] = "Bearer" + window.localStorage.getItem('_token');
 //Constante URL
 
-const URL: string = 'http://127.0.0.1:8000/api/auth/'
+const URL: string = 'https://estandares-programacion.herokuapp.com/api/auth/'
 
 const namespaced: boolean = true;
 
