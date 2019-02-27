@@ -11,11 +11,16 @@
         </v-btn>
         <v-list style="margin-top: 4rem;" transition="scale-transition">
           <v-list-tile>
-            <v-list-tile-title style="text-align:center">Ver mi perfil</v-list-tile-title>
+            <v-list-tile-title style="text-align:center">
+              <v-icon>account_circle</v-icon>
+              <router-link class="nav-link" to="perfil">Ver mi perfil</router-link>
+            </v-list-tile-title>
           </v-list-tile>
           <v-list-tile>
             <v-list-tile-title style="height:100%">
-              <v-btn outline color="indigo" @click="cerrarSesion()">Cerrar sesión</v-btn>
+              <v-btn outline color="indigo" @click="cerrarSesion()">
+                <v-icon>exit_to_app</v-icon>Cerrar sesión
+              </v-btn>
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -45,33 +50,9 @@
         </v-list>
       </v-toolbar>
 
-      <v-list class="pt-0" dense v-if="logged">
-        <v-divider></v-divider>
-        <v-list-tile v-for="item in logeados" :key="item.title">
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              <router-link class="nav-link" :to="item.ruta">{{item.title}}</router-link>
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+      <Logeados v-if="logged"/>
 
-      <v-list class="pt-0" dense v-if="!logged">
-        <v-divider></v-divider>
-        <v-list-tile v-for="item in nologged" :key="item.title">
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              <router-link class="nav-link" :to="item.ruta">{{item.title}}</router-link>
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+      <NoLogeados v-if="!logged"/>
     </v-navigation-drawer>
   </nav>
 </template>
@@ -79,23 +60,30 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Getter, Action } from "vuex-class";
+import Logeados from "@/components/navs/Logeados.vue";
+import NoLogeados from "@/components/navs/NoLogeados.vue";
 @Component({
-  name: "Nav"
+  name: "Nav",
+  components: { Logeados, NoLogeados }
 })
 export default class Navbar extends Vue {
   data() {
     return {
       drawer: false,
-      logeados: [
-        { title: "Home", icon: "dashboard", ruta: "/" },
-        { title: "About", icon: "question_answer", ruta: "/about" },
-        { title: "Historial", icon: "question_answer", ruta: "/about" },
-        { title: "Mi QR", icon: "question_answer", ruta: "/about" },
-        { title: "Aranceles", icon: "question_answer", ruta: "/about" }
-      ],
+
       nologged: [
-        { title: "Login", icon: "dashboard", ruta: "/login" },
-        { title: "Registrate", icon: "question_answer", ruta: "/registro" }
+        {
+          icon: "https",
+          iconClass: "blue white--text",
+          title: "Login",
+          ruta: "/login"
+        },
+        {
+          icon: "input",
+          iconClass: "amber white--text",
+          title: "Registrarse",
+          ruta: "/registro"
+        }
       ]
     };
   }
@@ -116,5 +104,17 @@ export default class Navbar extends Vue {
   display: inline-block;
   vertical-align: top;
   border: 1px solid rgba(#000, 0.12);
+}
+.v-list__tile {
+  .nav-link {
+    text-decoration: none;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+  }
+  &:hover {
+    background: red !important;
+  }
 }
 </style>

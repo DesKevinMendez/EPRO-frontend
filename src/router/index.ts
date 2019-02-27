@@ -14,7 +14,10 @@ const router = new Router({
     base: process.env.BASE_URL,
     routes: [
         Auth.home,
-        Auth.about,
+        Auth.aranceles,
+        Auth.codigoqr,
+        Auth.historial,
+        Auth.perfil,
         //Rutas que no requieren inicio de sesion
         NoAuth.login,
         NoAuth.registro
