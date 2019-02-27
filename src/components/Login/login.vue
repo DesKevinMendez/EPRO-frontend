@@ -53,12 +53,13 @@ export default class login extends Vue {
       },
       valid: true,
       passwrodRules: [
-        v => !!v || "Password is required",
-        v => (v && v.length <= 6) || "Name must be less than 10 characters"
+        (v: any) => !!v || "Password is required",
+        (v: any) =>
+          (v && v.length <= 6) || "Name must be less than 10 characters"
       ],
       emailRules: [
-        v => !!v || "E-mail is required",
-        v => /.+@.+/.test(v) || "E-mail must be valid"
+        (v: any) => !!v || "E-mail is required",
+        (v: any) => /.+@.+/.test(v) || "E-mail must be valid"
       ]
     };
   }
