@@ -1,65 +1,34 @@
 <template>
-  <div class="page-container">
-    <md-app md-waterfall md-mode="fixed-last">
-      <md-app-toolbar class="md-dense md-primary">
-        <div class="md-toolbar-row">
-          <div class="md-toolbar-section-start">
-            <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-              <md-icon>menu</md-icon>
-            </md-button>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Vuetify</span>
+        <span class="font-weight-light">MATERIAL DESIGN</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
+        <span class="mr-2">Latest Release</span>
+      </v-btn>
+    </v-toolbar>
 
-            <span class="md-title">Control parqueo</span>
-          </div>
-
-          <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button">
-              <md-icon>more_vert</md-icon>
-            </md-button>
-          </div>
-        </div>
-      </md-app-toolbar>
-
-      <md-app-drawer :md-active.sync="menuVisible">
-        <md-toolbar class="md-dense" md-elevation="0">Navigation</md-toolbar>
-
-        <Nav/>
-      </md-app-drawer>
-
-      <md-app-content class="body">
-        <router-view/>
-      </md-app-content>
-    </md-app>
-  </div>
+    <v-content>
+      <router-view/>
+    </v-content>
+  </v-app>
 </template>
 
+<script>
+import HelloWorld from "./components/HelloWorld";
 
-
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Navbar from "@/components/Navbar.vue";
-import Nav from "@/components/Nav.vue";
-@Component({
+export default {
   name: "App",
-  components: { Navbar, Nav },
-  data: () => ({
-    menuVisible: false
-  })
-})
-export default class App extends Vue {}
+  components: {
+    HelloWorld
+  },
+  data() {
+    return {
+      //
+    };
+  }
+};
 </script>
-
-<style lang="scss" scoped>
-.body {
-  height: 100vh;
-}
-.md-app {
-  max-height: 400px;
-  border: 1px solid rgba(#000, 0.12);
-}
-
-// Demo purposes only
-.md-drawer {
-  width: 230px;
-  max-width: calc(100vw - 125px);
-}
-</style>

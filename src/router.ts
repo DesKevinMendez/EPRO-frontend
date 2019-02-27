@@ -25,9 +25,9 @@ const router = new Router({
 
     },
     {
-      path: '/test',
-      name: 'test',
-      component: () => import(/* webpackChunkName: "about" */ './views/temp.vue'),
+      path: '/veutify',
+      name: 'veutify',
+      component: () => import(/* webpackChunkName: "about" */ './components/HelloWorld.vue'),
       meta: { Auth: true, title: 'Acerca de' },
 
     },

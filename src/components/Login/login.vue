@@ -1,49 +1,37 @@
 <template>
-  <md-card md-with-hover>
-    <md-ripple>
-      <md-card-header>
-        <div class="md-title">Inicia sesión</div>
-      </md-card-header>
-      <md-card-content>
-        <form v-on:submit.prevent="enviarDatos(user)" id="login">
-          <md-field md-clearable>
-            <label>Email</label>
-            <md-input
-              id="email"
-              type="email"
-              :class="'form-control'"
+  <div>
+    <v-card>
+      <v-card-title primary-title>
+        <div>
+          <div class="headline">Inicia sesión</div>
+        </div>
+      </v-card-title>
+
+      <v-slide-y-transition>
+        <v-card-text>
+          <v-form ref="form" lazy-validation>
+            <v-text-field
               name="email"
               v-model="user.email"
-              autofocus
-              placeholder="Correo electrónico"
+              :rules="emailRules"
+              label="E-mail"
               required
-            ></md-input>
-          </md-field>
-          <md-field md-clearable>
-            <label>Contraseña</label>
-            <md-input
-              id="password"
-              type="password"
-              class="form-control"
+            ></v-text-field>
+            <v-text-field
               name="password"
               v-model="user.password"
-              placeholder="Contraseña"
+              :rules="passwrodRules"
+              type="password"
+              label="E-mail"
               required
-            ></md-input>
-          </md-field>
+            ></v-text-field>
 
-          <div class="form-group mb-0" v-if="proceso">
-            <md-button class="md-raised" disabled>Login</md-button>
-            <Procesando/>
-          </div>
-          <div class="form-group mb-0" v-else>
-            <md-button class="md-raised md-primary" type="submit">Login</md-button>
-          </div>
-          <Errores v-if="errores.error" :error="errores.error"/>
-        </form>
-      </md-card-content>
-    </md-ripple>
-  </md-card>
+            <v-btn :disabled="proceso" color="success" @click="enviarDatos(user)">Login</v-btn>
+          </v-form>
+        </v-card-text>
+      </v-slide-y-transition>
+    </v-card>
+  </div>
 </template>
 
 <script lang="ts">
@@ -62,7 +50,16 @@ export default class login extends Vue {
         email: "",
         password: "",
         error: null
-      }
+      },
+      valid: true,
+      passwrodRules: [
+        v => !!v || "Password is required",
+        v => (v && v.length <= 6) || "Name must be less than 10 characters"
+      ],
+      emailRules: [
+        v => !!v || "E-mail is required",
+        v => /.+@.+/.test(v) || "E-mail must be valid"
+      ]
     };
   }
   enviarDatos(user: object) {
