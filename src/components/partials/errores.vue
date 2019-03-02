@@ -1,7 +1,5 @@
 <template>
-  <div class="text-center error">
-    <span class="badge badge-danger">{{error}}</span>
-  </div>
+  <v-alert :value="true" type="error">{{error}}</v-alert>
 </template>
 <script>
 export default {

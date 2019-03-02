@@ -28,6 +28,7 @@
             <v-btn :disabled="proceso" color="success" @click="enviarDatos(user)">Login</v-btn>
             <Procesando v-if="proceso"/>
           </v-form>
+          <Errores v-if="errores.error" :error="errores.error"/>
         </v-card-text>
       </v-slide-y-transition>
     </v-card>
