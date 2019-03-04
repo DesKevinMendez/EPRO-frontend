@@ -9,9 +9,11 @@
         </v-btn>
       </v-card-actions>
       <v-slide-y-transition>
-        <v-card-media v-show="show">
+        <v-responsive  v-show="show">
+          
           <canvas id="myChart" width="400" height="400"></canvas>
-        </v-card-media>
+        
+        </v-responsive>
       </v-slide-y-transition>
     </v-card>
   </v-container>

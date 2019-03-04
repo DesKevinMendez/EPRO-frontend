@@ -1,6 +1,6 @@
 <template>
   <v-card-title>
-    <v-card color="green" class="white--text" style="top: -35px; margin-bottom:-24px">
+    <v-card color="green" class="white--text" style="top: -35px; margin-bottom:-24px; margin:auto">
       <v-card-title primary-title>
         <div>
           <div class="headline">Unlimited music now</div>

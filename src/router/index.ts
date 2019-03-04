@@ -10,7 +10,7 @@ Vue.use(Router);
 import store from '@/store';
 
 const router = new Router({
-    mode: 'history',
+    //mode: 'history',
     base: process.env.BASE_URL,
     routes: [
         Auth.home,

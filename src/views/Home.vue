@@ -6,7 +6,7 @@
         <Grafica/>
       </v-flex>
       <v-flex xs12 md6>
-        <Aranceles/>
+        <QR/>
       </v-flex>
     </v-layout>
   </div>
@@ -17,10 +17,10 @@ import { Component, Vue } from "vue-property-decorator";
 import { Getter } from "vuex-class";
 import Windows from "@/components/Home/Windows.vue";
 import Grafica from "@/components/Home/Grafica.vue";
-import Aranceles from "@/components/Home/Aranceles.vue";
+import QR from "@/components/QR/qr.vue";
 @Component({
   name: "Home",
-  components: { Windows, Grafica, Aranceles }
+  components: { Windows, Grafica, QR }
 })
 export default class Home extends Vue {
   @Getter("authModule/USER") user: any;
