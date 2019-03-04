@@ -2,8 +2,8 @@
   <v-app>
     <Nav/>
     <v-content>
-      <v-container fluid >
-      <router-view/>
+      <v-container fluid>
+        <router-view/>
       </v-container>
     </v-content>
     <Footer/>
@@ -25,3 +25,9 @@ export default class App extends Vue {
   }
 }
 </script>
+<style lang="scss">
+body {
+  background: #eeeeee;
+}
+</style>
+
