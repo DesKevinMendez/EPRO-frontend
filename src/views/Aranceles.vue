@@ -8,11 +8,12 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
 import Arancele from "@/components/Aranceles/Aranceles.vue";
+
 @Component({
   name: "Aranceles",
   components: { Arancele }
 })
-export default class Aranceles extends Vue {}
+class Aranceles extends Vue {}
+export default Aranceles;
 </script>

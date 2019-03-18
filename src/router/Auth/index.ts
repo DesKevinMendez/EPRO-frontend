@@ -1,36 +1,42 @@
-
 export default {
-    home: {
-        path: '/',
-        name: 'home',
-        component: () => import(/* webpackChunkName: "about" */ './../../views/Home.vue'),
-        meta: { Auth: true, title: 'Home' },
+  home: {
+    path: "/",
+    name: "home",
+    component: () => {
+      return import(/* webpackChunkName: "about" */ "./../../views/Home.vue");
     },
-    historial: {
-        path: '/historial',
-        name: 'historial',
-        component: () => import(/* webpackChunkName: "about" */ './../../views/Historial.vue'),
-        meta: { Auth: true, title: 'Historia' },
-
+    meta: { Auth: true, title: "Home" }
+  },
+  historial: {
+    path: "/historial",
+    name: "historial",
+    component: () => {
+      return import(/* webpackChunkName: "about" */ "./../../views/Historial.vue");
     },
-    perfil: {
-        path: '/perfil',
-        name: 'perfil',
-        component: () => import(/* webpackChunkName: "about" */ './../../views/Perfil.vue'),
-        meta: { Auth: true, title: 'Perfil' },
-
+    meta: { Auth: true, title: "Historia" }
+  },
+  perfil: {
+    path: "/perfil",
+    name: "perfil",
+    component: () => {
+      return import(/* webpackChunkName: "about" */ "./../../views/Perfil.vue");
     },
-    aranceles: {
-        path: '/aranceles',
-        name: 'aranceles',
-        component: () => import(/* webpackChunkName: "about" */ './../../views/Aranceles.vue'),
-        meta: { Auth: true, title: 'Pranceles' },
+    meta: { Auth: true, title: "Perfil" }
+  },
+  aranceles: {
+    path: "/aranceles",
+    name: "aranceles",
+    component: () => {
+      return import(/* webpackChunkName: "about" */ "./../../views/Aranceles.vue");
     },
-    codigoqr: {
-        path: '/codigoqr',
-        name: 'codigoqr',
-        component: () => import(/* webpackChunkName: "about" */ './../../views/QR.vue'),
-        meta: { Auth: true, title: 'Codigo QR' },
+    meta: { Auth: true, title: "Pranceles" }
+  },
+  codigoqr: {
+    path: "/codigoqr",
+    name: "codigoqr",
+    component: () => {
+      return import(/* webpackChunkName: "about" */ "./../../views/QR.vue");
     },
-
-}
+    meta: { Auth: true, title: "Codigo QR" }
+  }
+};

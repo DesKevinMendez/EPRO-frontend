@@ -1,7 +1,6 @@
 //Store
 export interface State {
-    procesando: boolean,
-    authModule?: any
+  sesion?: any;
+  procesando: boolean;
+  authModule?: any;
 }
-
-

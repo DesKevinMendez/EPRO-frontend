@@ -12,9 +12,11 @@
 import MiPerfil from "@/components/perfil/MiPerfil.vue";
 import EditarPerfil from "@/components/perfil/EditarPerfil.vue";
 import { Component, Vue } from "vue-property-decorator";
+
 @Component({
   name: "Perfil",
   components: { MiPerfil, EditarPerfil }
 })
-export default class Perfil extends Vue {}
+class Perfil extends Vue {}
+export default Perfil;
 </script>

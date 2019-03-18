@@ -18,11 +18,13 @@ import { Getter } from "vuex-class";
 import Windows from "@/components/Home/Windows.vue";
 import Grafica from "@/components/Home/Grafica.vue";
 import QR from "@/components/QR/qr.vue";
+
 @Component({
   name: "Home",
   components: { Windows, Grafica, QR }
 })
-export default class Home extends Vue {
+class Home extends Vue {
   @Getter("authModule/USER") user: any;
 }
+export default Home;
 </script>

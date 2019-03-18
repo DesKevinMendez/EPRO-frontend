@@ -1,0 +1,135 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "extends": ["airbnb-base", "plugin:vue/recommended"],
+  "plugins": ["typescript"],
+  "rules": {
+    "operator-linebreak": ["error", "after"],
+
+    "linebreak-style": 0,
+    "vue/max-attributes-per-line": [
+      4,
+      {
+        "singleline": 4,
+        "multiline": {
+          "max": 1,
+          "allowFirstLine": true
+        }
+      }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-shadow": [
+      "error",
+      {
+        "allow": ["state"]
+      }
+    ],
+    "arrow-body-style": ["error", "always"],
+    "dot-notation": [
+      2,
+      {
+        "allowKeywords": true,
+        "allowPattern": "Authorization"
+      }
+    ],
+    "vue/attributes-order": [
+      "error",
+      {
+        "order": [
+          "DEFINITION",
+          "LIST_RENDERING",
+          "CONDITIONALS",
+          "RENDER_MODIFIERS",
+          "GLOBAL",
+          "UNIQUE",
+          "OTHER_ATTR",
+          "CONTENT",
+          "EVENTS",
+          "TWO_WAY_BINDING",
+          "OTHER_DIRECTIVES"
+        ]
+      }
+    ],
+
+    "vue/html-closing-bracket-spacing": [
+      "error",
+      {
+        "startTag": "never",
+        "endTag": "never",
+        "selfClosingTag": "never"
+      }
+    ],
+
+    "vue/singleline-html-element-content-newline": [
+      "error",
+      {
+        "ignoreWhenNoAttributes": false,
+        "ignoreWhenEmpty": false,
+        "ignores": [
+          "pre",
+          "textarea",
+          "h1",
+          "router-link",
+          "div",
+          "i",
+          "td",
+          "strong"
+        ]
+      }
+    ],
+    "vue/attribute-hyphenation": [
+      "error",
+      "never",
+      {
+        "ignore": ["primary-title", "lazy-validation", "permanent", "absolute"]
+      }
+    ],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterSingleLine": true }
+    ],
+    "class-methods-use-this": [
+      "error",
+      {
+        "exceptMethods": ["data"]
+      }
+    ],
+
+    "quotes": [
+      2,
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "eol-last": [2, "never"],
+    "no-undef": [
+      "error",
+      {
+        "typeof": true
+      }
+    ],
+    "comma-dangle": ["error", "never"],
+    "no-duplicate-imports": [
+      "error",
+      {
+        "includeExports": true
+      }
+    ],
+    "import/no-unresolved": [2, { "ignore": [".vue$", ".ts$"] }]
+  },
+  "settings": {}
+}

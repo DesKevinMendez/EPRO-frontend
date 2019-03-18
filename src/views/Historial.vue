@@ -8,11 +8,12 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
 import Historial from "@/components/Historial/Historial.vue";
+
 @Component({
   name: "Aranceles",
   components: { Historial }
 })
-export default class HistorialUser extends Vue {}
+class HistorialUser extends Vue {}
+export default HistorialUser;
 </script>

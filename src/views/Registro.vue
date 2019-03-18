@@ -9,11 +9,13 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import RegistroForm from "@/components/Registro/registroform.vue";
+
 @Component({
   name: "Registro",
   components: { RegistroForm }
 })
-export default class Registro extends Vue {}
+class Registro extends Vue {}
+export default Registro;
 </script>
 
 <style lang="scss">
@@ -22,4 +24,3 @@ export default class Registro extends Vue {}
   justify-content: center;
 }
 </style>
-

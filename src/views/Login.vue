@@ -9,11 +9,13 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import FormLogin from "@/components/Login/login.vue";
+
 @Component({
   name: "LoginView",
   components: { FormLogin }
 })
-export default class Home extends Vue {}
+class Home extends Vue {}
+export default Home;
 </script>
 
 <style lang="scss">

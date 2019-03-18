@@ -4,10 +4,12 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import QRcode from '@/components/QR/qr.vue'
+import QRcode from "@/components/QR/qr.vue";
+
 @Component({
   name: "QR",
-  components: {QRcode}
+  components: { QRcode }
 })
-export default class QR extends Vue {}
+class QR extends Vue {}
+export default QR;
 </script>
