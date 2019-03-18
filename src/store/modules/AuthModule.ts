@@ -125,12 +125,15 @@ const actions: ActionTree<State, any> = {
     });
   },
   [AuthTypes.actions.REGISTRO]: ({ commit, state }, user) => {
+    console.log(user);
     store.commit(RootTypes.mutations.INICIOPROCESO);
 
     return new Promise((resolve, reject) => {
       http
         .post(`auth/register`, {
-          name: user.name,
+          nombre: user.nombre,
+          apellido: user.apellido,
+          carnet: user.carnet,
           email: user.email,
           password: user.password,
           password_confirmation: user.password_confirmation

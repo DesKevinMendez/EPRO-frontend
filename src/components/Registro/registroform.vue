@@ -11,39 +11,55 @@
         <v-card-text>
           <v-form ref="form" lazy-validation>
             <v-text-field
-              name="name"
-              :rules="nameRules"
-              v-model="user.name"
-              label="Nombre"
+              name="nombre"
+              :rules="generalRules"
               required
-            ></v-text-field>
-            <span style="color: red;" v-if="errores.name">{{ errores.name[0] }}</span>
+              label="Nombre"
+              v-model="user.nombre"
+            />
+            <span v-if="errores.nombre" style="color: red;">{{ errores.nombre[0] }}</span>
+            <v-text-field
+              name="apellido"
+              :rules="generalRules"
+              required
+              label="Apellido"
+              v-model="user.apellido"
+            />
+            <span v-if="errores.apellido" style="color: red;">{{ errores.apellido[0] }}</span>
+            <v-text-field
+              name="carnet"
+              :rules="generalRules"
+              label="Carnet"
+              required
+              v-model="user.carnet"
+            />
+            <span v-if="errores.carnet" style="color: red;">{{ errores.carnet[0] }}</span>
             <v-text-field
               name="email"
-              v-model="user.email"
               :rules="emailRules"
               type="email"
               label="E-mail"
               required
-            ></v-text-field>
-            <span style="color: red;" v-if="errores.email">{{ errores.email[0] }}</span>
+              v-model="user.email"
+            />
+            <span v-if="errores.email" style="color: red;">{{ errores.email[0] }}</span>
             <v-text-field
               type="password"
               name="name"
               :rules="passwrodRules"
-              v-model="user.password"
               label="Password"
               required
-            ></v-text-field>
-            <span style="color: red;" v-if="errores.password">{{ errores.password[0] }}</span>
+              v-model="user.password"
+            />
+            <span v-if="errores.password" style="color: red;">{{ errores.password[0] }}</span>
             <v-text-field
               :rules="passwrodRules"
               type="password"
               name="password_confirmation"
-              v-model="user.password_confirmation"
               label="Confirmar contraseña"
               required
-            ></v-text-field>
+              v-model="user.password_confirmation"
+            />
             <v-btn :disabled="proceso" color="success" @click="enviarDatos(user)">Registrarse</v-btn>
             <Procesando v-if="proceso"/>
           </v-form>
@@ -57,18 +73,22 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Action, Getter } from "vuex-class";
 import Procesando from "@/components/partials/proceso.vue";
+import AuthTypes from "@/store/types/AuthTypes.ts";
+
 @Component({
   name: "formularioLogin",
   components: { Procesando }
 })
-export default class login extends Vue {
+class login extends Vue {
   data() {
     return {
       user: {
-        name: "",
+        nombre: "Kevin Ezequiel",
+        apellido: "Mendez Orellana",
+        carnet: "25-3992-2015",
         email: "",
         password: "",
-        password_confirmation: ""
+        password_confirmation: "000000"
       },
       passwrodRules: [
         (v: any) => !!v || "Password is required",
@@ -79,14 +99,18 @@ export default class login extends Vue {
         (v: any) => !!v || "E-mail is required",
         (v: any) => /.+@.+/.test(v) || "E-mail must be valid"
       ],
-      nameRules: [(v: any) => !!v || "Name is required"]
+
+      generalRules: [(v: any) => !!v || "This input is required"]
     };
   }
-  enviarDatos(user: object) {
+
+  enviarDatos(user: Object) {
     this.registro(user);
   }
+
   @Getter("proceso") proceso: any;
   @Getter("authModule/ERROR") errores: any;
-  @Action("authModule/REGISTRO") registro: any;
+  @Action(`authModule/${AuthTypes.actions.REGISTRO}`) registro: any;
 }
+export default login;
 </script>
