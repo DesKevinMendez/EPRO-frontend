@@ -125,7 +125,6 @@ const actions: ActionTree<State, any> = {
     });
   },
   [AuthTypes.actions.REGISTRO]: ({ commit, state }, user) => {
-    console.log(user);
     store.commit(RootTypes.mutations.INICIOPROCESO);
 
     return new Promise((resolve, reject) => {

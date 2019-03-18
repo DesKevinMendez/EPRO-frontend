@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex, { GetterTree, ActionTree, MutationTree } from "vuex";
 import authModule from "@/store/modules/AuthModule.ts";
+import datosModule from "@/store/modules/DatosModule.ts";
 import { State } from "@/store/types/root.ts";
 import RootTypes from "@/store/types/RootTypes.ts";
 import AuthTypes from "@/store/types/AuthTypes.ts";
@@ -93,6 +94,7 @@ export default new Vuex.Store({
   getters,
   actions,
   modules: {
-    authModule
+    authModule,
+    datosModule
   }
 });
