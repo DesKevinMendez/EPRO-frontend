@@ -5,5 +5,6 @@ export interface State {
   historial: any;
   aranceles: any;
   home: any;
-  perfil: any
+  perfil: any;
+  errors: []
 }
