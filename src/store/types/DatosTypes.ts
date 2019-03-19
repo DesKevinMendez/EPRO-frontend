@@ -1,5 +1,23 @@
 export default {
-  mutations: {},
-  getters: {},
-  actions: {}
+  mutations: {
+    SETQR: "SETQR",
+    SETHISTORIAL: "SETHISTORIAL",
+    SETARANCELES: "SETARANCELES",
+    SETHOME: "SETHOME",
+    SETPERFIL: "SETPERFIL"
+  },
+  getters: {
+    GETQR: "GETQR",
+    GETHISTORIAL: "GETHISTORIAL",
+    GETARANCELES: "GETARANCELES",
+    GETHOME: "GETHOME",
+    GETPERFIL: "GETPERFIL"
+  },
+  actions: {
+    QR:"QR",
+    HISTORIAL:"HISTORIAL",
+    ARANCELES: "ARANCELES",
+    HOME: "HOME",
+    PERFIL: "PERFIL"
+  }
 };

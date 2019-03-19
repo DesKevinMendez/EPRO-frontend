@@ -9,11 +9,27 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Historial from "@/components/Historial/Historial.vue";
+import { Action, Getter } from "vuex-class";
+import DatosTypes from "@/store/types/DatosTypes.ts";
 
 @Component({
   name: "Aranceles",
   components: { Historial }
 })
-class HistorialUser extends Vue {}
+class HistorialUser extends Vue {
+    data(){
+    return {
+
+    }
+  }
+
+  mounted(){
+    this.historial();
+  }
+
+  @Action(`datosModule/${DatosTypes.actions.HISTORIAL}`) historial: any;
+
+  @Getter(`datosModule/${DatosTypes.getters.GETARANCELES}`) getAranceles: any;
+}
 export default HistorialUser;
 </script>
