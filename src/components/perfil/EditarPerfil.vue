@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-card>
-      <TituloVCard/>
+      <TituloVCard titulo="Editar perfil" body="Asegúrate de tener siempre tus datos actualizados"/>
       <v-card-text>
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Name" required></v-text-field>

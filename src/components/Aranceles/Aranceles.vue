@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-card>
-      <TituloVCard/>
+      <TituloVCard titulo="Aranceles" body="Registro histórico de tus pagos"/>
       <v-data-table :headers="headers" :items="aranceles" class="elevation-1">
         <template v-slot:items="arance">
           <td>{{ arance.item.FechaPago }}</td>

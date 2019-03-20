@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-card>
-      <TituloVCard/>
+      <TituloVCard titulo="Mi código QR" body="Escanea este codigo a la entrada del parqueo"/>
       <v-responsive>
         <v-flex center>
           <v-img style="text-align:center" v-html="qrCode"></v-img>

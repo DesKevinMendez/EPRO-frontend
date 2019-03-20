@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import TituloVCard from "@/components/partials/titulo-v-card.vue";
 
 export default {
   name: "MiPerfil",
@@ -40,6 +39,5 @@ export default {
       required: true
     }
   },
-  components: { TituloVCard }
 };
 </script>

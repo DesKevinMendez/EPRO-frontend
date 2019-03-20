@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-card>
-      <TituloVCard/>
+      <TituloVCard titulo="Gráfica" body="Estadísticas de tus datos"/>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn icon @click="show = !show">
@@ -10,9 +10,9 @@
       </v-card-actions>
       <v-slide-y-transition>
         <v-responsive  v-show="show">
-          
+
           <canvas id="myChart" width="400" height="400"></canvas>
-        
+
         </v-responsive>
       </v-slide-y-transition>
     </v-card>

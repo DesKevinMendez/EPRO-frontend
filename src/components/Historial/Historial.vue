@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-card>
-      <TituloVCard/>
+      <TituloVCard titulo="Historial" body="Estos han sido tus movimientos en nuestra plataforma"/>
       <v-container>
         <v-timeline>
           <v-timeline-item v-for="n in historial" :key="n.id" color="red lighten-2" large>
@@ -24,6 +24,7 @@
 </template>
 <script>
 import TituloVCard from "@/components/partials/titulo-v-card.vue";
+
 export default {
   name: "Historial",
   components: { TituloVCard },
