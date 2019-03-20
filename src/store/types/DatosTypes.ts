@@ -5,7 +5,8 @@ export default {
     SETARANCELES: "SETARANCELES",
     SETHOME: "SETHOME",
     SETPERFIL: "SETPERFIL",
-    SETERRORS: "SETERRORS"
+    SETERRORS: "SETERRORS",
+    VERIFICAEXISTEUSUARIO: "VERIFICAEXISTEUSUARIO"
   },
   getters: {
     GETQR: "GETQR",
@@ -16,8 +17,8 @@ export default {
     GETERRORS: "GETERRORS"
   },
   actions: {
-    QR:"QR",
-    HISTORIAL:"HISTORIAL",
+    QR: "QR",
+    HISTORIAL: "HISTORIAL",
     ARANCELES: "ARANCELES",
     HOME: "HOME",
     PERFIL: "PERFIL"

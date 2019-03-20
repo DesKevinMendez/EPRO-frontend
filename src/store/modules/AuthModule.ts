@@ -55,8 +55,12 @@ const mutations: MutationTree<State> = {
     window.sessionStorage.removeItem("HoraInicio");
     window.sessionStorage.removeItem("TiempoSesion");
     window.sessionStorage.removeItem("HoraFinalizada");
+
     eliminarCookie("SessionStart");
     eliminarCookie("HoraInicio");
+    // LocalStorage de DatosModule
+    window.localStorage.removeItem("qrCode");
+    window.localStorage.removeItem("userLogeado");
   },
   // Establece localStore y SesionStore y cookies
   [AuthTypes.mutations.STORESESION]: (state, res) => {

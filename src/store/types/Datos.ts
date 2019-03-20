@@ -1,10 +1,11 @@
 // Store
 
 export interface State {
-  qr: String;
+  qr: any;
   historial: any;
   aranceles: any;
   home: any;
   perfil: any;
-  errors: []
+  errors: [];
+  verificaExisteUsuario: Boolean;
 }
