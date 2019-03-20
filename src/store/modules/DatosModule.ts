@@ -8,6 +8,8 @@ import RootTypes from "@/store/types/RootTypes.ts";
 
 // Se encarga de hacer las peticiones asincronas con axios
 import { http } from "@/utils/HTTP.ts";
+// Importara para formatear fechas
+import moment from "moment";
 
 const namespaced: boolean = true;
 const state: State = {
@@ -45,8 +47,17 @@ const mutations: MutationTree<State> = {
   [DatosTypes.mutations.SETHOME]: (state) => {
     return "";
   },
-  [DatosTypes.mutations.SETARANCELES]: (state) => {
-    return "";
+  [DatosTypes.mutations.SETARANCELES]: (state, aranceles) => {
+    const formatoARanceles: { FechaPago: any; Hora: any; Mes: any; Valor: any }[] = [];
+    aranceles.filter((key: any) => {
+      formatoARanceles.push({
+        FechaPago: moment(key["fecha_pago"]).format("LL"),
+        Hora: moment(key["created_at"]).format("LT"),
+        Mes: moment(key["created_at"]).format("MMMM"),
+        Valor: key["pago"]
+      });
+    });
+    state.aranceles = formatoARanceles;
   },
   [DatosTypes.mutations.SETHISTORIAL]: (state, historial) => {
     state.historial = historial;
@@ -90,6 +101,7 @@ const actions: ActionTree<State, any> = {
       http
         .get("aranceles")
         .then((res) => {
+          commit(DatosTypes.mutations.SETARANCELES, res.data);
           resolve(res);
         })
         .catch((error) => {

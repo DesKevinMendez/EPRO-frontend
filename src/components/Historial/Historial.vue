@@ -4,7 +4,7 @@
       <TituloVCard/>
       <v-container>
         <v-timeline>
-          <v-timeline-item v-for="n in historial" :key="n" color="red lighten-2" large>
+          <v-timeline-item v-for="n in historial" :key="n.id" color="red lighten-2" large>
             <template v-slot:opposite>
               <span>{{ n.fecha_registro }}</span>
             </template>
