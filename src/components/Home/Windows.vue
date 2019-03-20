@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap>
-    <v-flex v-for="(i, index) in 3" :key="i" xs12 sm6 md4>
+    <v-flex v-if="home.length!==0" v-for="(i, index) in 3" :key="i" xs12 sm6 md4>
       <v-hover>
         <v-card slot-scope="{ hover }" class="mx-auto mt-4" color="grey lighten-4" max-width="300">
           <v-img :aspect-ratio="16/9" src="https://cdn.vuetifyjs.com/images/cards/kitchen.png">

@@ -2,7 +2,12 @@
   <v-container fluid>
     <v-card>
       <TituloVCard titulo="Aranceles" body="Registro histórico de tus pagos"/>
-      <v-data-table :headers="headers" :items="aranceles" class="elevation-1">
+      <v-data-table
+        v-if="aranceles.length!==0"
+        :headers="headers"
+        :items="aranceles"
+        class="elevation-1"
+      >
         <template v-slot:items="arance">
           <td>{{ arance.item.FechaPago }}</td>
           <td class="text-xs-center">{{ arance.item.Mes }}</td>

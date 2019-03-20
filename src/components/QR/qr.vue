@@ -18,7 +18,7 @@ export default {
   props: {
     qrCode: {
       type: String,
-      required: true
+      required: false
     }
   },
   data() {

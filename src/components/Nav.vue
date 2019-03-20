@@ -45,7 +45,9 @@
             </v-list-tile-avatar>
 
             <v-list-tile-content>
-              <v-list-tile-title>Kevin Mendez</v-list-tile-title>
+              <v-list-tile-title
+                v-if="getPerfil.lenght!==0"
+              >{{ getPerfil.nombre }} {{ getPerfil.apellido }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -63,6 +65,7 @@ import { Component, Vue } from "vue-property-decorator";
 import { Getter, Action } from "vuex-class";
 import Logeados from "@/components/navs/Logeados.vue";
 import NoLogeados from "@/components/navs/NoLogeados.vue";
+import DatosTypes from "@/store/types/DatosTypes.ts";
 
 @Component({
   name: "Nav",
@@ -82,6 +85,8 @@ class Navbar extends Vue {
 
   // verifica que el usuario este logeado desde el modulo
   @Getter("authModule/LOGGED") logged: any;
+
+  @Getter(`datosModule/${DatosTypes.getters.GETPERFIL}`) getPerfil: any;
   // Actions para cerrar sesion.
   @Action("authModule/LOGOUT") logout: any;
   // Accion que actualiza el estado de datosModule
