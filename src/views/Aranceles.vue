@@ -22,7 +22,9 @@ class Aranceles extends Vue {
   }
 
   mounted() {
-    this.aranceles();
+    if(this.getAranceles.length === 0){
+      this.aranceles();
+    }
   }
 
   @Action(`datosModule/${DatosTypes.actions.ARANCELES}`) aranceles: any;

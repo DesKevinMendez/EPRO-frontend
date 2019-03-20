@@ -15,6 +15,7 @@
 </template>
 <script>
 import TituloVCard from "@/components/partials/titulo-v-card.vue";
+
 export default {
   name: "Aranceles",
   components: { TituloVCard },

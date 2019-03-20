@@ -62,6 +62,15 @@ const mutations: MutationTree<State> = {
   [DatosTypes.mutations.SETHISTORIAL]: (state, historial) => {
     state.historial = historial;
   },
+  [DatosTypes.mutations.DESTROYDATA]: (state) => {
+    state.aranceles = [];
+    state.errors = [];
+    state.historial = [];
+    state.home = [];
+    state.perfil = [];
+    state.qr = null;
+    state.verificaExisteUsuario = false;
+  },
   [DatosTypes.mutations.SETQR]: (state, qr) => {
     state.qr = qr;
   },
@@ -75,6 +84,9 @@ const mutations: MutationTree<State> = {
 };
 
 const actions: ActionTree<State, any> = {
+  [DatosTypes.actions.DESTROYDATA]: ({ commit }) => {
+    commit(DatosTypes.mutations.DESTROYDATA);
+  },
   [DatosTypes.actions.HOME]: ({ commit, state }) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
 

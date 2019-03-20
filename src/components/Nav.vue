@@ -63,24 +63,31 @@ import { Component, Vue } from "vue-property-decorator";
 import { Getter, Action } from "vuex-class";
 import Logeados from "@/components/navs/Logeados.vue";
 import NoLogeados from "@/components/navs/NoLogeados.vue";
+
 @Component({
   name: "Nav",
   components: { Logeados, NoLogeados }
 })
-export default class Navbar extends Vue {
+class Navbar extends Vue {
   data() {
     return {
       drawer: false
     };
   }
+
   cerrarSesion() {
     this.logout();
+    this.destruirData();
   }
-  //verifica que el usuario este logeado desde el modulo
+
+  // verifica que el usuario este logeado desde el modulo
   @Getter("authModule/LOGGED") logged: any;
-  //Actions para cerrar sesion.
+  // Actions para cerrar sesion.
   @Action("authModule/LOGOUT") logout: any;
+  // Accion que actualiza el estado de datosModule
+  @Action("datosModule/DESTROYDATA") destruirData: any;
 }
+export default Navbar;
 </script>
 
 <style lang="scss">

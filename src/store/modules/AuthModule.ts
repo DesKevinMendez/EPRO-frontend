@@ -60,6 +60,7 @@ const mutations: MutationTree<State> = {
     eliminarCookie("HoraInicio");
     // LocalStorage de DatosModule
     window.localStorage.removeItem("userLogeado");
+    window.localStorage.removeItem("vuex");
   },
   // Establece localStore y SesionStore y cookies
   [AuthTypes.mutations.STORESESION]: (state, res) => {
