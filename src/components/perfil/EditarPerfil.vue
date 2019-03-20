@@ -17,9 +17,16 @@
 
 <script>
 import TituloVCard from "@/components/partials/titulo-v-card.vue";
+
 export default {
   name: "EditarPerfil",
   components: { TituloVCard },
+  props: {
+    perfil: {
+      type: Object,
+      required: true
+    }
+  },
   data: () => ({
     valid: true,
     name: "",

@@ -1,10 +1,10 @@
 <template>
   <v-layout row wrap class="mt-4">
     <v-flex xs12 md8>
-      <EditarPerfil/>
+      <EditarPerfil :perfil="getPerfil"/>
     </v-flex>
     <v-flex xs12 md4>
-      <MiPerfil/>
+      <MiPerfil :perfil="getPerfil"/>
     </v-flex>
   </v-layout>
 </template>
@@ -20,17 +20,10 @@ import DatosTypes from "@/store/types/DatosTypes.ts";
   components: { MiPerfil, EditarPerfil }
 })
 class Perfil extends Vue {
-   data(){
-    return {
-
-    }
+  data() {
+    return {};
   }
 
-  mounted(){
-    this.perfil();
-  }
-
-  @Action(`datosModule/${DatosTypes.actions.PERFIL}`) perfil: any;
   @Getter(`datosModule/${DatosTypes.getters.GETPERFIL}`) getPerfil: any;
 }
 export default Perfil;

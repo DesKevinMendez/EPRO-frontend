@@ -32,7 +32,7 @@
       transition="slide-x-transition"
       v-model="drawer"
       permanent
-      absolute
+      fixed
       v-if="drawer"
       :app="true"
       light

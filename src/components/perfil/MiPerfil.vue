@@ -8,8 +8,21 @@
       </v-card-title>
       <v-card-text style="padding-top:-10px;">
         <div>
-          <h3 style="text-align: center;" class="headline mb-0">Kangaroo Valley Safari</h3>
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sunt dolorem fugiat ab recusandae aut. Iure vitae laboriosam sed mollitia error, odio porro officia quaerat harum omnis, animi ullam perferendis?</div>
+          <h3
+            style="text-align: center;"
+            class="headline mb-0"
+          >{{ perfil.nombre }} {{ perfil.apellido }}</h3>
+          <br>
+          <div style="font-size: 18px !important">
+            <strong>Carnet:</strong>
+            {{ perfil.carnet }}
+            <br>
+            <strong>Email:</strong>
+            {{ perfil.email }}
+            <br>
+            <strong>Fecha de registro:</strong>
+            {{ perfil.created_at }}
+          </div>
         </div>
       </v-card-text>
     </v-card>
@@ -18,8 +31,15 @@
 
 <script>
 import TituloVCard from "@/components/partials/titulo-v-card.vue";
+
 export default {
   name: "MiPerfil",
+  props: {
+    perfil: {
+      type: Object,
+      required: true
+    }
+  },
   components: { TituloVCard }
 };
 </script>

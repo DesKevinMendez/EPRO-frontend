@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Windows/>
+    <Windows :home="getHome"/>
     <v-layout row wrap class="mt-4">
       <v-flex xs12 md6>
         <Grafica/>
@@ -31,7 +31,9 @@ class Home extends Vue {
   }
 
   mounted() {
-    this.home();
+    if (this.getHome.length === 0) {
+      this.home();
+    }
   }
 
   @Action(`datosModule/${DatosTypes.actions.HOME}`) home: any;

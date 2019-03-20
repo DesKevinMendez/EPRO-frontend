@@ -44,8 +44,8 @@ const getters: GetterTree<State, any> = {
 };
 
 const mutations: MutationTree<State> = {
-  [DatosTypes.mutations.SETHOME]: (state) => {
-    return "";
+  [DatosTypes.mutations.SETHOME]: (state, home) => {
+    state.home = home;
   },
   [DatosTypes.mutations.SETARANCELES]: (state, aranceles) => {
     const formatoARanceles: { FechaPago: any; Hora: any; Mes: any; Valor: any }[] = [];
@@ -94,8 +94,9 @@ const actions: ActionTree<State, any> = {
       http
         .get("home")
         .then((res) => {
-          commit(DatosTypes.mutations.SETPERFIL, res.data);
-          commit(DatosTypes.mutations.SETQR, res.data.qr);
+          commit(DatosTypes.mutations.SETPERFIL, res.data.user);
+          commit(DatosTypes.mutations.SETQR, res.data.user.qr);
+          commit(DatosTypes.mutations.SETHOME, res.data.home);
           resolve(res);
         })
         .catch((error) => {
