@@ -48,51 +48,43 @@ const mutations: MutationTree<State> = {
   [DatosTypes.mutations.SETARANCELES]: (state) => {
     return "";
   },
-  [DatosTypes.mutations.SETHISTORIAL]: (state) => {
-    return "";
+  [DatosTypes.mutations.SETHISTORIAL]: (state, historial) => {
+    state.historial = historial;
   },
-  [DatosTypes.mutations.SETQR]: (state) => {
-    return "";
+  [DatosTypes.mutations.SETQR]: (state, qr) => {
+    state.qr = qr;
   },
   [DatosTypes.mutations.SETPERFIL]: (state, user) => {
-    state.perfil = user.data;
-    state.qr = user.data.qr;
-    window.localStorage.setItem("userLogeado", JSON.stringify(user.data));
+    state.perfil = user;
+    window.localStorage.setItem("userLogeado", JSON.stringify(user));
   },
   [DatosTypes.mutations.SETERRORS]: (state, error) => {
     state.errors = error;
-  },
-  [DatosTypes.mutations.VERIFICAEXISTEUSUARIO]: (state, error) => {
-    if (!!window.localStorage.getItem("userLogeado")) {
-      state.verificaExisteUsuario = true;
-    }
   }
 };
 
 const actions: ActionTree<State, any> = {
-  [DatosTypes.actions.HOME]: ({ commit }, state) => {
+  [DatosTypes.actions.HOME]: ({ commit, state }) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
-    commit(DatosTypes.mutations.VERIFICAEXISTEUSUARIO);
-    if (!!!window.localStorage.getItem("userLogeado")) {
-      return new Promise((resolve, reject) => {
-        http
-          .get("home")
-          .then((res) => {
-            commit(DatosTypes.mutations.SETPERFIL, res);
-            resolve(res);
-          })
-          .catch((error) => {
-            commit(DatosTypes.mutations.SETERRORS, error);
-            reject(error);
-          })
-          .finally(() => {
-            store.commit(RootTypes.mutations.FINALIZARPROCESO);
-          });
-      });
-    }
+
+    return new Promise((resolve, reject) => {
+      http
+        .get("home")
+        .then((res) => {
+          commit(DatosTypes.mutations.SETPERFIL, res.data);
+          commit(DatosTypes.mutations.SETQR, res.data.qr);
+          resolve(res);
+        })
+        .catch((error) => {
+          commit(DatosTypes.mutations.SETERRORS, error);
+          reject(error);
+        })
+        .finally(() => {
+          store.commit(RootTypes.mutations.FINALIZARPROCESO);
+        });
+    });
   },
-  [DatosTypes.actions.ARANCELES]: ({ commit }, state) => {
-    console.log("Se ha montado el componente Aranceles");
+  [DatosTypes.actions.ARANCELES]: ({ commit, state }) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
     return new Promise((resolve, reject) => {
       http
@@ -108,13 +100,13 @@ const actions: ActionTree<State, any> = {
         });
     });
   },
-  [DatosTypes.actions.HISTORIAL]: ({ commit }, state) => {
-    console.log("Se ha montado el componente Historial");
+  [DatosTypes.actions.HISTORIAL]: ({ commit, state }) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
     return new Promise((resolve, reject) => {
       http
         .get("historialIngresoParqueo")
         .then((res) => {
+          commit(DatosTypes.mutations.SETHISTORIAL, res.data);
           resolve(res);
         })
         .catch((error) => {
@@ -127,7 +119,6 @@ const actions: ActionTree<State, any> = {
   },
   /*[DatosTypes.actions.QR]: ({ commit }, state) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
-    commit(DatosTypes.mutations.VERIFICAEXISTEUSUARIO);
     if (!state.verificaExisteUsuario) {
       return new Promise((resolve, reject) => {
         http

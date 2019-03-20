@@ -1,7 +1,7 @@
 <template>
   <v-layout row wrap class="mt-4">
     <v-flex xs12>
-      <Arancele/>
+      <Arancele :aranceles="getAranceles"/>
     </v-flex>
   </v-layout>
 </template>
@@ -14,23 +14,20 @@ import DatosTypes from "@/store/types/DatosTypes.ts";
 
 @Component({
   name: "Aranceles",
-  components: { Arancele },
+  components: { Arancele }
 })
 class Aranceles extends Vue {
-  data(){
-    return {
-
-    }
+  data() {
+    return {};
   }
 
-  mounted(){
+  mounted() {
     this.aranceles();
   }
 
   @Action(`datosModule/${DatosTypes.actions.ARANCELES}`) aranceles: any;
 
-  @Getter(`datosModule/${DatosTypes.getters.GETARANCELES}`) gerAranceles: any;
-
+  @Getter(`datosModule/${DatosTypes.getters.GETARANCELES}`) getAranceles: any;
 }
 export default Aranceles;
 </script>

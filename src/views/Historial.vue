@@ -1,7 +1,7 @@
 <template>
   <v-layout row wrap class="mt-4">
     <v-flex xs12>
-      <Historial/>
+      <Historial :historial="getHistorial"/>
     </v-flex>
   </v-layout>
 </template>
@@ -17,19 +17,17 @@ import DatosTypes from "@/store/types/DatosTypes.ts";
   components: { Historial }
 })
 class HistorialUser extends Vue {
-    data(){
-    return {
-
-    }
+  data() {
+    return {};
   }
 
-  mounted(){
+  mounted() {
     this.historial();
   }
 
   @Action(`datosModule/${DatosTypes.actions.HISTORIAL}`) historial: any;
 
-  @Getter(`datosModule/${DatosTypes.getters.GETARANCELES}`) getAranceles: any;
+  @Getter(`datosModule/${DatosTypes.getters.GETHISTORIAL}`) getHistorial: any;
 }
 export default HistorialUser;
 </script>
