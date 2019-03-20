@@ -6,7 +6,7 @@
         <Grafica/>
       </v-flex>
       <v-flex xs12 md6>
-        <QR/>
+        <QRcode :qrCode="getQR"/>
       </v-flex>
     </v-layout>
   </div>
@@ -17,29 +17,27 @@ import { Component, Vue } from "vue-property-decorator";
 import { Getter } from "vuex-class";
 import Windows from "@/components/Home/Windows.vue";
 import Grafica from "@/components/Home/Grafica.vue";
-import QR from "@/components/QR/qr.vue";
+import QRcode from "@/components/QR/qr.vue";
 import { Action } from "vuex-class";
 import DatosTypes from "@/store/types/DatosTypes.ts";
 
 @Component({
   name: "Home",
-  components: { Windows, Grafica, QR }
+  components: { Windows, Grafica, QRcode }
 })
 class Home extends Vue {
-   data(){
-    return {
-
-    }
+  data() {
+    return {};
   }
 
-  mounted(){
+  mounted() {
     this.home();
   }
 
   @Action(`datosModule/${DatosTypes.actions.HOME}`) home: any;
 
   @Getter(`datosModule/${DatosTypes.getters.GETHOME}`) getHome: any;
-  
+  @Getter(`datosModule/${DatosTypes.getters.GETQR}`) getQR: any;
   @Getter("authModule/USER") user: any;
 }
 export default Home;

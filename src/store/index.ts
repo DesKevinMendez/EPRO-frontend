@@ -6,6 +6,11 @@ import { State } from "@/store/types/root.ts";
 import RootTypes from "@/store/types/RootTypes.ts";
 import AuthTypes from "@/store/types/AuthTypes.ts";
 
+// Evita perder el state al momento de recargar la web
+import VuexPersistence from "vuex-persist";
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+});
 Vue.use(Vuex);
 
 const state: State = {
@@ -88,7 +93,7 @@ const actions: ActionTree<State, any> = {
     }, 60000);
   }
 };
-export default new Vuex.Store({
+export default new Vuex.Store<State>({
   state,
   mutations,
   getters,
@@ -96,5 +101,6 @@ export default new Vuex.Store({
   modules: {
     authModule,
     datosModule
-  }
+  },
+  plugins: [vuexLocal.plugin]
 });

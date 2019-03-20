@@ -4,7 +4,7 @@
       <TituloVCard/>
       <v-responsive>
         <v-flex center>
-          <v-img style="text-align:center">{{ qrCode }}</v-img>
+          <v-img style="text-align:center" v-html="qrCode"></v-img>
         </v-flex>
       </v-responsive>
     </v-card>

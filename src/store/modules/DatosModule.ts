@@ -52,12 +52,11 @@ const mutations: MutationTree<State> = {
     return "";
   },
   [DatosTypes.mutations.SETQR]: (state) => {
-    state.qr = window.localStorage.getItem("qrCode");
+    return "";
   },
   [DatosTypes.mutations.SETPERFIL]: (state, user) => {
     state.perfil = user.data;
     state.qr = user.data.qr;
-    window.localStorage.setItem("qrCode", JSON.stringify(user.data.qr));
     window.localStorage.setItem("userLogeado", JSON.stringify(user.data));
   },
   [DatosTypes.mutations.SETERRORS]: (state, error) => {
@@ -74,22 +73,23 @@ const actions: ActionTree<State, any> = {
   [DatosTypes.actions.HOME]: ({ commit }, state) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
     commit(DatosTypes.mutations.VERIFICAEXISTEUSUARIO);
-
-    return new Promise((resolve, reject) => {
-      http
-        .get("home")
-        .then((res) => {
-          commit(DatosTypes.mutations.SETPERFIL, res);
-          resolve(res);
-        })
-        .catch((error) => {
-          commit(DatosTypes.mutations.SETERRORS, error);
-          reject(error);
-        })
-        .finally(() => {
-          store.commit(RootTypes.mutations.FINALIZARPROCESO);
-        });
-    });
+    if (!!!window.localStorage.getItem("userLogeado")) {
+      return new Promise((resolve, reject) => {
+        http
+          .get("home")
+          .then((res) => {
+            commit(DatosTypes.mutations.SETPERFIL, res);
+            resolve(res);
+          })
+          .catch((error) => {
+            commit(DatosTypes.mutations.SETERRORS, error);
+            reject(error);
+          })
+          .finally(() => {
+            store.commit(RootTypes.mutations.FINALIZARPROCESO);
+          });
+      });
+    }
   },
   [DatosTypes.actions.ARANCELES]: ({ commit }, state) => {
     console.log("Se ha montado el componente Aranceles");
