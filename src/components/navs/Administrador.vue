@@ -43,6 +43,12 @@ export default {
           title: "Aranceles",
           icon: "attach_money",
           ruta: "/aranceles"
+        },
+        {
+          iconClass: "lime white--text",
+          title: "Usuarios",
+          icon: "attach_money",
+          ruta: "/usuarios"
         }
       ]
     };

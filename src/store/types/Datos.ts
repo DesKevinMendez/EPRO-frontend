@@ -7,5 +7,6 @@ export interface State {
   home: any;
   perfil: any;
   errors: [];
+  usuarios: any;
   verificaExisteUsuario: Boolean;
 }

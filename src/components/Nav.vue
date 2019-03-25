@@ -53,7 +53,8 @@
         </v-list>
       </v-toolbar>
 
-      <Logeados v-if="logged"/>
+      <Logeados v-if="logged && role.role==='Estudiante'"/>
+      <AdminNav v-if="role.role==='Admin'"/>
 
       <NoLogeados v-if="!logged"/>
     </v-navigation-drawer>
@@ -64,12 +65,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Getter, Action } from "vuex-class";
 import Logeados from "@/components/navs/Logeados.vue";
+import AdminNav from "@/components/navs/Administrador.vue";
 import NoLogeados from "@/components/navs/NoLogeados.vue";
 import DatosTypes from "@/store/types/DatosTypes.ts";
 
 @Component({
   name: "Nav",
-  components: { Logeados, NoLogeados }
+  components: { Logeados, NoLogeados, AdminNav }
 })
 class Navbar extends Vue {
   data() {
@@ -85,6 +87,8 @@ class Navbar extends Vue {
 
   // verifica que el usuario este logeado desde el modulo
   @Getter("authModule/LOGGED") logged: any;
+
+  @Getter("authModule/ROLE") role: any;
 
   @Getter(`datosModule/${DatosTypes.getters.GETPERFIL}`) getPerfil: any;
   // Actions para cerrar sesion.

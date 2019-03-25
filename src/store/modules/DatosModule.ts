@@ -20,6 +20,7 @@ const state: State = {
   home: [],
   perfil: [],
   errors: [],
+  usuarios: [],
   verificaExisteUsuario: false
 };
 
@@ -41,6 +42,10 @@ const getters: GetterTree<State, any> = {
   },
   [DatosTypes.getters.GETERRORS]: (state) => {
     return state.errors;
+
+  },
+  [DatosTypes.getters.GETUSUARIOS]: (state) => {
+    return state.usuarios;
   }
 };
 
@@ -69,6 +74,7 @@ const mutations: MutationTree<State> = {
     state.historial = [];
     state.home = [];
     state.perfil = [];
+    state.usuarios = [];
     state.qr = null;
     state.verificaExisteUsuario = false;
   },
@@ -81,6 +87,9 @@ const mutations: MutationTree<State> = {
   },
   [DatosTypes.mutations.SETERRORS]: (state, error) => {
     state.errors = error;
+  },
+  [DatosTypes.mutations.SETUSUARIOS]: (state, usuarios) => {
+    state.usuarios = usuarios;
   }
 };
 
@@ -144,14 +153,14 @@ const actions: ActionTree<State, any> = {
         });
     });
   },
-  /*[DatosTypes.actions.QR]: ({ commit }, state) => {
+  [DatosTypes.actions.USUARIOS]: ({ commit }, state) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
-    if (!state.verificaExisteUsuario) {
+
       return new Promise((resolve, reject) => {
         http
-          .get("qr")
+          .get("allStudents")
           .then((res) => {
-            commit(DatosTypes.mutations.SETPERFIL, res);
+            commit(DatosTypes.mutations.SETUSUARIOS, res.data);
             resolve(res);
           })
           .catch((error) => {
@@ -162,10 +171,8 @@ const actions: ActionTree<State, any> = {
             store.commit(RootTypes.mutations.FINALIZARPROCESO);
           });
       });
-    }
-  },*/
+  },
   [DatosTypes.actions.PERFIL]: (state) => {
-    console.log("Se ha montado el componente Perfil");
     store.commit(RootTypes.mutations.INICIOPROCESO);
     return new Promise((resolve, reject) => {
       http

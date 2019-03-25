@@ -29,7 +29,15 @@ export default {
     component: () => {
       return import(/* webpackChunkName: "about" */ "./../../views/Aranceles.vue");
     },
-    meta: { Auth: true, title: "Pranceles" }
+    meta: { Auth: true, title: "Aranceles" }
+  },
+  usuarios: {
+    path: "/usuarios",
+    name: "usuarios",
+    component: () => {
+      return import(/* webpackChunkName: "about" */ "./../../views/Usuarios.vue");
+    },
+    meta: { Auth: true, title: "Usuarios" }
   },
   codigoqr: {
     path: "/codigoqr",
