@@ -10,6 +10,7 @@ import RootTypes from "@/store/types/RootTypes.ts";
 import { http } from "@/utils/HTTP.ts";
 // Importara para formatear fechas
 import moment from "moment";
+import AuthTypes from "../types/AuthTypes";
 
 const namespaced: boolean = true;
 const state: State = {
@@ -97,6 +98,7 @@ const actions: ActionTree<State, any> = {
           commit(DatosTypes.mutations.SETPERFIL, res.data.user);
           commit(DatosTypes.mutations.SETQR, res.data.user.qr);
           commit(DatosTypes.mutations.SETHOME, res.data.home);
+          store.commit(`authModule/${AuthTypes.mutations.ROLES}`, res.data.role);
           resolve(res);
         })
         .catch((error) => {

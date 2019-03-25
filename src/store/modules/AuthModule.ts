@@ -19,7 +19,8 @@ const namespaced: boolean = true;
 const state: State = {
   token: !!window.localStorage.getItem("_token"),
   auth: [],
-  error: []
+  error: [],
+  role: ""
 };
 const mutations: MutationTree<State> = {
   // establecemos el user a través del token jwt
@@ -48,6 +49,7 @@ const mutations: MutationTree<State> = {
     state.token = false;
     state.auth = [];
     state.error = [];
+    state.role = "";
 
     window.localStorage.removeItem("_token");
     window.sessionStorage.removeItem("SesionStart");
@@ -83,6 +85,9 @@ const mutations: MutationTree<State> = {
     // Establece cookie de sesion
     crearCookie("SessionStart", d.toString(), 0.05 / 24);
     crearCookie("HoraInicio", `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`, 1);
+  },
+  [AuthTypes.mutations.ROLES]: (state, role) => {
+    state.role = role;
   }
 };
 const getters: GetterTree<State, any> = {
@@ -97,6 +102,9 @@ const getters: GetterTree<State, any> = {
   // Obtenemos los errores del server
   [AuthTypes.getters.ERROR]: (state) => {
     return state.error;
+  },
+  [AuthTypes.getters.ROLE]: (state) => {
+    return state.role;
   }
 };
 

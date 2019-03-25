@@ -9,4 +9,5 @@ export interface State {
   token: any;
   auth: auth[];
   error: Object;
+  role: any;
 }
