@@ -35,7 +35,7 @@ export default {
   name: "MiPerfil",
   props: {
     perfil: {
-      type: Object,
+      type: Array,
       required: true
     }
   },

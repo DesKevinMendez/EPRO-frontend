@@ -22,7 +22,7 @@ class Aranceles extends Vue {
   }
 
   mounted() {
-    if(this.getAranceles.length === 0){
+    if (this.getAranceles.length === 0) {
       this.aranceles();
     }
   }

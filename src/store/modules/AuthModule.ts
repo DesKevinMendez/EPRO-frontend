@@ -20,7 +20,8 @@ const state: State = {
   token: !!window.localStorage.getItem("_token"),
   auth: [],
   error: [],
-  role: ""
+  role: "",
+  mensajeSuccess: ""
 };
 const mutations: MutationTree<State> = {
   // establecemos el user a través del token jwt
@@ -44,12 +45,16 @@ const mutations: MutationTree<State> = {
       state.token = true;
     }
   },
+  [AuthTypes.mutations.SETMENSAJESUCCESS]: (state, data) => {
+    state.mensajeSuccess = data;
+  },
   // Destruye la sesion
   [AuthTypes.mutations.DESTROYSESSION]: (state) => {
     state.token = false;
     state.auth = [];
     state.error = [];
     state.role = "";
+    state.mensajeSuccess = "";
 
     window.localStorage.removeItem("_token");
     window.sessionStorage.removeItem("SesionStart");
@@ -105,6 +110,9 @@ const getters: GetterTree<State, any> = {
   },
   [AuthTypes.getters.ROLE]: (state) => {
     return state.role;
+  },
+  [AuthTypes.getters.MENSAJESUCCESS]: (state) => {
+    return state.mensajeSuccess;
   }
 };
 
@@ -129,6 +137,31 @@ const actions: ActionTree<State, any> = {
         })
         .catch((error) => {
           state.error = error.response.data;
+          reject(error);
+        })
+        .finally(() => {
+          store.commit(RootTypes.mutations.FINALIZARPROCESO);
+        });
+    });
+  },
+  [AuthTypes.actions.REFRESHPASS]: ({ commit, state }, user) => {
+    store.commit(RootTypes.mutations.INICIOPROCESO);
+    console.log(user);
+
+    return new Promise((resolve, reject) => {
+      http
+        .post(`cambiarpassword`, {
+          password_actual: user.password_actual,
+          password: user.password_nuevo,
+          password_confirmation: user.password_confirmation
+        })
+        .then((res) => {
+          commit(AuthTypes.mutations.SETMENSAJESUCCESS, res.data);
+          resolve(res);
+        })
+        .catch((error) => {
+          state.error = error.response.data;
+
           reject(error);
         })
         .finally(() => {

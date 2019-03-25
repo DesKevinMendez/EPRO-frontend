@@ -10,4 +10,5 @@ export interface State {
   auth: auth[];
   error: Object;
   role: any;
+  mensajeSuccess: any;
 }
