@@ -3,7 +3,7 @@ export default {
     path: "/",
     name: "home",
     component: () => {
-      return import(/* webpackChunkName: "about" */ "./../../views/Home.vue");
+      return import(/* webpackChunkName: "about" */ "@/views/Home.vue");
     },
     meta: { Auth: true, title: "Home" }
   },
@@ -11,7 +11,7 @@ export default {
     path: "/historial",
     name: "historial",
     component: () => {
-      return import(/* webpackChunkName: "about" */ "./../../views/Historial.vue");
+      return import(/* webpackChunkName: "about" */ "@/views/Historial.vue");
     },
     meta: { Auth: true, title: "Historia" }
   },
@@ -19,7 +19,7 @@ export default {
     path: "/perfil",
     name: "perfil",
     component: () => {
-      return import(/* webpackChunkName: "about" */ "./../../views/Perfil.vue");
+      return import(/* webpackChunkName: "about" */ "@/views/Perfil.vue");
     },
     meta: { Auth: true, title: "Perfil" }
   },
@@ -27,7 +27,7 @@ export default {
     path: "/aranceles",
     name: "aranceles",
     component: () => {
-      return import(/* webpackChunkName: "about" */ "./../../views/Aranceles.vue");
+      return import(/* webpackChunkName: "about" */ "@/views/Aranceles.vue");
     },
     meta: { Auth: true, title: "Aranceles" }
   },
@@ -35,7 +35,7 @@ export default {
     path: "/usuarios",
     name: "usuarios",
     component: () => {
-      return import(/* webpackChunkName: "about" */ "./../../views/Usuarios.vue");
+      return import(/* webpackChunkName: "about" */ "@/views/Usuarios.vue");
     },
     meta: { Auth: true, title: "Usuarios" }
   },
@@ -43,7 +43,7 @@ export default {
     path: "/codigoqr",
     name: "codigoqr",
     component: () => {
-      return import(/* webpackChunkName: "about" */ "./../../views/QR.vue");
+      return import(/* webpackChunkName: "about" */ "@/views/QR.vue");
     },
     meta: { Auth: true, title: "Codigo QR" }
   }

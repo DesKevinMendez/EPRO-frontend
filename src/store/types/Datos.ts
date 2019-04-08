@@ -8,5 +8,7 @@ export interface State {
   perfil: any;
   errors: [];
   usuarios: any;
+  maestros: any;
+  administradores: any;
   verificaExisteUsuario: Boolean;
 }

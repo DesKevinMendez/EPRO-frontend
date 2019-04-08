@@ -22,9 +22,9 @@ class UserInfo extends Vue {
   }
 
   mounted() {
-      if (this.getuser.length === 0) {
-    this.usuario();
-      }
+    if (this.getuser.length === 0) {
+      this.usuario();
+    }
   }
 
   @Action(`datosModule/${DatosTypes.actions.USUARIOS}`) usuario: any;

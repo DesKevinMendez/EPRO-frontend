@@ -3,7 +3,7 @@ export default {
     path: "/login",
     name: "login",
     component: () => {
-      return import(/* webpackChunkName: "login" */ "./../../views/Login.vue");
+      return import(/* webpackChunkName: "login" */ "@/views/Login.vue");
     },
 
     meta: { Auth: false, title: "Iniciar sesión" },
@@ -20,7 +20,7 @@ export default {
     path: "/registro",
     name: "registro",
     component: () => {
-      return import(/* webpackChunkName: "registro" */ "./../../views/Registro.vue");
+      return import(/* webpackChunkName: "registro" */ "@/views/Registro.vue");
     },
 
     meta: { Auth: false, title: "Registrate en nuestra aplicación" },

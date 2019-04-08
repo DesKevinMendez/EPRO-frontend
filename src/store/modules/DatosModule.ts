@@ -10,7 +10,7 @@ import RootTypes from "@/store/types/RootTypes.ts";
 import { http } from "@/utils/HTTP.ts";
 // Importara para formatear fechas
 import moment from "moment";
-import AuthTypes from "../types/AuthTypes";
+import AuthTypes from "@/store/types/AuthTypes.ts";
 
 const namespaced: boolean = true;
 const state: State = {
@@ -21,6 +21,8 @@ const state: State = {
   perfil: [],
   errors: [],
   usuarios: [],
+  maestros: [],
+  administradores: [],
   verificaExisteUsuario: false
 };
 
@@ -42,10 +44,15 @@ const getters: GetterTree<State, any> = {
   },
   [DatosTypes.getters.GETERRORS]: (state) => {
     return state.errors;
-
   },
   [DatosTypes.getters.GETUSUARIOS]: (state) => {
     return state.usuarios;
+  },
+  [DatosTypes.getters.GETMAESTROS]: (state) => {
+    return state.maestros;
+  },
+  [DatosTypes.getters.GETADMINISTRADORES]: (state) => {
+    return state.administradores;
   }
 };
 
@@ -57,10 +64,10 @@ const mutations: MutationTree<State> = {
     const formatoARanceles: { FechaPago: any; Hora: any; Mes: any; Valor: any }[] = [];
     aranceles.filter((key: any) => {
       formatoARanceles.push({
-        FechaPago: moment(key["fecha_pago"]).format("LL"),
-        Hora: moment(key["created_at"]).format("LT"),
-        Mes: moment(key["created_at"]).format("MMMM"),
-        Valor: key["pago"]
+        FechaPago: moment(key.fecha_pago).format("LL"),
+        Hora: moment(key.created_at).format("LT"),
+        Mes: moment(key.created_at).format("MMMM"),
+        Valor: key.pago
       });
     });
     state.aranceles = formatoARanceles;
@@ -80,6 +87,12 @@ const mutations: MutationTree<State> = {
   },
   [DatosTypes.mutations.SETQR]: (state, qr) => {
     state.qr = qr;
+  },
+  [DatosTypes.mutations.SETADMINISTRADORES]: (state, adminstrador) => {
+    state.administradores = adminstrador;
+  },
+  [DatosTypes.mutations.SETMAESTROS]: (state, maestros) => {
+    state.maestros = maestros;
   },
   [DatosTypes.mutations.SETPERFIL]: (state, user) => {
     state.perfil = user;
@@ -156,21 +169,21 @@ const actions: ActionTree<State, any> = {
   [DatosTypes.actions.USUARIOS]: ({ commit }, state) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
 
-      return new Promise((resolve, reject) => {
-        http
-          .get("allStudents")
-          .then((res) => {
-            commit(DatosTypes.mutations.SETUSUARIOS, res.data);
-            resolve(res);
-          })
-          .catch((error) => {
-            commit(DatosTypes.mutations.SETERRORS, error);
-            reject(error);
-          })
-          .finally(() => {
-            store.commit(RootTypes.mutations.FINALIZARPROCESO);
-          });
-      });
+    return new Promise((resolve, reject) => {
+      http
+        .get("allStudents")
+        .then((res) => {
+          commit(DatosTypes.mutations.SETUSUARIOS, res.data);
+          resolve(res);
+        })
+        .catch((error) => {
+          commit(DatosTypes.mutations.SETERRORS, error);
+          reject(error);
+        })
+        .finally(() => {
+          store.commit(RootTypes.mutations.FINALIZARPROCESO);
+        });
+    });
   },
   [DatosTypes.actions.PERFIL]: (state) => {
     store.commit(RootTypes.mutations.INICIOPROCESO);
@@ -178,6 +191,40 @@ const actions: ActionTree<State, any> = {
       http
         .get("qr")
         .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => {
+          reject(error);
+        })
+        .finally(() => {
+          store.commit(RootTypes.mutations.FINALIZARPROCESO);
+        });
+    });
+  },
+  [DatosTypes.actions.MAESTROS]: ({ commit }) => {
+    store.commit(RootTypes.mutations.INICIOPROCESO);
+    return new Promise((resolve, reject) => {
+      http
+        .get("maestros")
+        .then((res) => {
+          commit(DatosTypes.mutations.SETMAESTROS, res.data);
+          resolve(res);
+        })
+        .catch((error) => {
+          reject(error);
+        })
+        .finally(() => {
+          store.commit(RootTypes.mutations.FINALIZARPROCESO);
+        });
+    });
+  },
+  [DatosTypes.actions.ADMINISTRADORES]: ({ commit }) => {
+    store.commit(RootTypes.mutations.INICIOPROCESO);
+    return new Promise((resolve, reject) => {
+      http
+        .get("admin")
+        .then((res) => {
+          commit(DatosTypes.mutations.SETADMINISTRADORES, res.data);
           resolve(res);
         })
         .catch((error) => {
