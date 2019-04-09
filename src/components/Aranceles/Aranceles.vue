@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-card>
-      <TituloVCard titulo="Aranceles" body="Registro histórico de tus pagos"/>
+      <TituloVCard :titulo="tituloCard" :body="bodyCard"/>
       <v-data-table
         v-if="aranceles.length!==0"
         :headers="headers"
@@ -28,6 +28,16 @@ export default {
     aranceles: {
       type: Array,
       required: true
+    },
+    tituloCard: {
+      type: String,
+      required: false,
+      default: "Aranceles"
+    },
+    bodyCard: {
+      type: String,
+      required: false,
+      default: "Registro histórico de tus pagos"
     }
   },
   data() {

@@ -6,20 +6,22 @@
     class="elevation-1"
   >
     <template v-slot:items="user">
-      <td>{{ user.item.nombre }} {{ user.item.apellido }}</td>
+      <router-link :to="`perfil/${user.item.url}`">
+        <td>{{ user.item.nombre }} {{ user.item.apellido }}</td>
+      </router-link>
       <td class="text-xs-center">{{ user.item.email }}</td>
       <td
         v-if="user.item.arancel!==null"
         class="text-xs-center"
       >
-{{ user.item.arancel.fecha_pago }}
-</td>
+        {{ user.item.arancel.fecha_pago }}
+      </td>
       <td
         v-if="user.item.ultimo_ingreso_parqueo!==null"
         class="text-xs-center"
       >
-{{ user.item.ultimo_ingreso_parqueo.fecha_registro }}
-</td>
+        {{ user.item.ultimo_ingreso_parqueo.fecha_registro }}
+      </td>
     </template>
   </v-data-table>
 </template>

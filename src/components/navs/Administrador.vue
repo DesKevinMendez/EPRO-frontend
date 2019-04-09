@@ -1,14 +1,16 @@
 <template>
-  <v-list two-line subheader dense>
-    <v-subheader inset>Menú</v-subheader>
-    <v-list-tile tag="div" v-for="item in admin" :key="item.title" avatar>
+  <v-list twoLine subheader dense>
+    <v-subheader inset>
+      Menú
+    </v-subheader>
+    <v-list-tile v-for="item in admin" :key="item.title" tag="div" avatar>
       <router-link class="nav-link" :to="item.ruta">
         <v-list-tile-avatar>
           <v-icon :class="[item.iconClass]">{{ item.icon }}</v-icon>
         </v-list-tile-avatar>
 
         <v-list-tile-content>
-          <v-list-tile-title>{{item.title}}</v-list-tile-title>
+          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
         </v-list-tile-content>
       </router-link>
     </v-list-tile>

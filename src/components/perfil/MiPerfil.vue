@@ -3,7 +3,7 @@
     <v-card>
       <v-card-title style="padding-bottom:0px">
         <v-avatar size="150" style="margin:auto; top:-40px ">
-          <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" aspect-ratio="2.75"></v-img>
+          <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" aspect-ratio="2.75"/>
         </v-avatar>
       </v-card-title>
       <v-card-text style="padding-top:-10px;">
@@ -35,9 +35,9 @@ export default {
   name: "MiPerfil",
   props: {
     perfil: {
-      type: Array,
+      type: Object,
       required: true
     }
-  },
+  }
 };
 </script>

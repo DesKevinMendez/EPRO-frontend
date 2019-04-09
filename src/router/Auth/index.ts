@@ -23,6 +23,14 @@ export default {
     },
     meta: { Auth: true, title: "Perfil" }
   },
+  perfilde: {
+    path: "/perfil/:user",
+    name: "perfilUsuario",
+    component: () => {
+      return import(/* webpackChunkName: "about" */ "@/views/PerfilUsuarios.vue");
+    },
+    meta: { Auth: true, title: "Perfil de usuario" }
+  },
   aranceles: {
     path: "/aranceles",
     name: "aranceles",

@@ -7,8 +7,8 @@
         <Error v-if="errorPass.error" :error="errorPass.mensaje"/>
       </div>
       <v-card-text>
-        <v-form ref="form" v-model="valid" lazy-validation autocomplete="off">
-          <v-text-field type="password" v-model="password_actual" label="Password actual"></v-text-field>
+        <v-form ref="form" lazy-validation v-model="valid" autocomplete="off">
+          <v-text-field type="password" label="Password actual" v-model="password_actual"/>
           <span
             v-if="getErrores.password_actual"
             style="color:red;"
@@ -16,19 +16,25 @@
 
           <v-text-field
             type="password"
-            browser-autocomplete
-            v-model="password_nuevo"
+            browserAutocomplete
             name="cambiarpassword"
+            v-model="password_nuevo"
             label="Password"
-          ></v-text-field>
-          <span v-if="getErrores.password" style="color:red;">{{ getErrores.password[0] }}</span>
+          />
+          <span v-if="getErrores.password" style="color:red;">
+{{ getErrores.password[0] }}
+</span>
           <v-text-field
             type="password"
             label="Confirmar contraseña"
             v-model="password_confirmation"
-          ></v-text-field>
-          <v-btn v-if="proceso" :disabled="valid" color="success" @click="validate">Espere...</v-btn>
-          <v-btn v-if="!proceso" :disabled="!valid" color="success" @click="validate">Actualizar</v-btn>
+          />
+          <v-btn v-if="proceso" :disabled="valid" color="success" @click="validate">
+Espere...
+</v-btn>
+          <v-btn v-if="!proceso" :disabled="!valid" color="success" @click="validate">
+Actualizar
+</v-btn>
         </v-form>
       </v-card-text>
     </v-card>
@@ -46,19 +52,21 @@ import { Action, Getter } from "vuex-class";
 
 @Component({
   name: "EditarPerfil",
-  components: { TituloVCard, Error, Exitoso },
+  components: {
+    TituloVCard, Error, Exitoso, Procesando
+  },
   props: {
     perfil: {
-      type: Array,
+      type: Object,
       required: true
     }
   },
-  data: () => ({
+  data: () => {return {
     valid: true,
     password_actual: "",
     password_nuevo: "",
     password_confirmation: ""
-  })
+  }}
 })
 class EditarPerfil extends Vue {
   validate() {

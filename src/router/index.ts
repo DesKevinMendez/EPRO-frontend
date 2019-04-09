@@ -19,6 +19,7 @@ const router = new Router({
     Auth.historial,
     Auth.perfil,
     Auth.usuarios,
+    Auth.perfilde,
     // Rutas que no requieren inicio de sesion
     NoAuth.login,
     NoAuth.registro

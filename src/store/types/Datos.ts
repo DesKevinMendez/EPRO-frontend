@@ -7,6 +7,7 @@ export interface State {
   home: any;
   perfil: any;
   errors: [];
+  datosDeUsuario: any;
   usuarios: any;
   maestros: any;
   administradores: any;

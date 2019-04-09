@@ -12,7 +12,7 @@
 import MiPerfil from "@/components/perfil/MiPerfil.vue";
 import EditarPerfil from "@/components/perfil/EditarPerfil.vue";
 import { Component, Vue } from "vue-property-decorator";
-import { Action, Getter } from "vuex-class";
+import { Getter } from "vuex-class";
 import DatosTypes from "@/store/types/DatosTypes.ts";
 
 @Component({

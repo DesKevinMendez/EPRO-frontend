@@ -14,11 +14,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Getter } from "vuex-class";
+import { Getter, Action } from "vuex-class";
 import Windows from "@/components/Home/Windows.vue";
 import Grafica from "@/components/Home/Grafica.vue";
 import QRcode from "@/components/QR/qr.vue";
-import { Action } from "vuex-class";
 import DatosTypes from "@/store/types/DatosTypes.ts";
 
 @Component({

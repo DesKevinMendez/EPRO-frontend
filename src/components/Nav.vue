@@ -1,13 +1,17 @@
 <template>
   <nav>
     <v-toolbar dark :app="true" fixed color="primary">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
 
-      <v-toolbar-title class="white--text">Parqueo UTEC</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-menu bottom left v-if="logged">
+      <v-toolbar-title class="white--text">
+        Parqueo UTEC
+      </v-toolbar-title>
+      <v-spacer/>
+      <v-menu v-if="logged" bottom left>
         <v-btn slot="activator" dark icon>
-          <v-icon>more_vert</v-icon>
+          <v-icon>
+            more_vert
+          </v-icon>
         </v-btn>
         <v-list style="margin-top: 4rem;" transition="scale-transition">
           <v-list-tile>
@@ -20,7 +24,9 @@
           <v-list-tile>
             <v-list-tile-title style="height:100%">
               <v-btn outline color="indigo" @click="cerrarSesion()">
-                <v-icon>exit_to_app</v-icon>Cerrar sesión
+                <v-icon>
+                  exit_to_app
+                </v-icon>Cerrar sesión
               </v-btn>
             </v-list-tile-title>
           </v-list-tile>
@@ -29,15 +35,15 @@
     </v-toolbar>
 
     <v-navigation-drawer
+      v-if="drawer"
       transition="slide-x-transition"
-      v-model="drawer"
       permanent
       fixed
-      v-if="drawer"
       :app="true"
       light
+      v-model="drawer"
     >
-      <v-toolbar flat class="transparent" v-if="logged" transition="slide-x-transition">
+      <v-toolbar v-if="logged" flat class="transparent" transition="slide-x-transition">
         <v-list class="pa-0" color="primary">
           <v-list-tile avatar>
             <v-list-tile-avatar>
@@ -47,7 +53,9 @@
             <v-list-tile-content>
               <v-list-tile-title
                 v-if="getPerfil.lenght!==0"
-              >{{ getPerfil.nombre }} {{ getPerfil.apellido }}</v-list-tile-title>
+              >
+                {{ getPerfil.nombre }} {{ getPerfil.apellido }}
+              </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>

@@ -18,12 +18,13 @@ const state: State = {
   historial: [],
   aranceles: [],
   home: [],
-  perfil: [],
+  perfil: {},
   errors: [],
   usuarios: [],
   maestros: [],
   administradores: [],
-  verificaExisteUsuario: false
+  verificaExisteUsuario: false,
+  datosDeUsuario: []
 };
 
 const getters: GetterTree<State, any> = {
@@ -53,6 +54,9 @@ const getters: GetterTree<State, any> = {
   },
   [DatosTypes.getters.GETADMINISTRADORES]: (state) => {
     return state.administradores;
+  },
+  [DatosTypes.getters.GETDATOSDEUSUARIO]: (state) => {
+    return state.datosDeUsuario;
   }
 };
 
@@ -103,6 +107,9 @@ const mutations: MutationTree<State> = {
   },
   [DatosTypes.mutations.SETUSUARIOS]: (state, usuarios) => {
     state.usuarios = usuarios;
+  },
+  [DatosTypes.mutations.SETDATOSDEUSUARIO]: (state, usuario) => {
+    state.datosDeUsuario = usuario;
   }
 };
 
@@ -225,6 +232,23 @@ const actions: ActionTree<State, any> = {
         .get("admin")
         .then((res) => {
           commit(DatosTypes.mutations.SETADMINISTRADORES, res.data);
+          resolve(res);
+        })
+        .catch((error) => {
+          reject(error);
+        })
+        .finally(() => {
+          store.commit(RootTypes.mutations.FINALIZARPROCESO);
+        });
+    });
+  },
+  [DatosTypes.actions.DATOSDEUSUARIO]: ({ commit }, url) => {
+    store.commit(RootTypes.mutations.INICIOPROCESO);
+    return new Promise((resolve, reject) => {
+      http
+        .get(`usuario/${url}`)
+        .then((res) => {
+          commit(DatosTypes.mutations.SETDATOSDEUSUARIO, res.data);
           resolve(res);
         })
         .catch((error) => {
