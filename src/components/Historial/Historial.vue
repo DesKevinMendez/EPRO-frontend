@@ -6,12 +6,13 @@
         <v-timeline>
           <v-timeline-item
             v-for="n in historial"
-            v-if="historial.length !== 0"
             :key="n.id"
             color="red lighten-2"
             large
           >
-            <template v-slot:opposite>
+            <template v-if="historial.length !== 0"
+                      v-slot:opposite
+            >
               <span>
                 {{ n.fecha_registro }}
               </span>

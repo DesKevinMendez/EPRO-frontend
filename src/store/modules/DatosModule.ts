@@ -79,6 +79,9 @@ const mutations: MutationTree<State> = {
   [DatosTypes.mutations.SETHISTORIAL]: (state, historial) => {
     state.historial = historial;
   },
+  [DatosTypes.mutations.SETDESTROYDATAUSER]: (state) => {
+    state.datosDeUsuario = [];
+  },
   [DatosTypes.mutations.DESTROYDATA]: (state) => {
     state.aranceles = [];
     state.errors = [];
