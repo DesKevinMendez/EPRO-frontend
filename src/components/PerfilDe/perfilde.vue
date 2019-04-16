@@ -140,12 +140,12 @@ import moment from "moment";
   name: "PerfilUser",
   props: ["usuario"],
   filters: {
-    HumanDate(value) {
+    HumanDate(value:any) {
       if (value) {
         return moment(String(value)).format("ll");
       }
     },
-    HumanHours(value) {
+    HumanHours(value:any) {
       if (value) {
         return moment(String(value), ["HH:mm:ss"]).format("hh mm A");
       }

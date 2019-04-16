@@ -7,7 +7,7 @@
         <Error v-if="errorPass.error" :error="errorPass.mensaje"/>
       </div>
       <v-card-text>
-        <v-form ref="form" lazy-validation v-model="valid" autocomplete="off">
+        <v-form ref="form" lazy-validation autocomplete="off" v-model="valid">
           <v-text-field type="password" label="Password actual" v-model="password_actual"/>
           <span
             v-if="getErrores.password_actual"
@@ -18,23 +18,23 @@
             type="password"
             browserAutocomplete
             name="cambiarpassword"
-            v-model="password_nuevo"
             label="Password"
+            v-model="password_nuevo"
           />
           <span v-if="getErrores.password" style="color:red;">
-{{ getErrores.password[0] }}
-</span>
+            {{ getErrores.password[0] }}
+          </span>
           <v-text-field
             type="password"
             label="Confirmar contraseña"
             v-model="password_confirmation"
           />
           <v-btn v-if="proceso" :disabled="valid" color="success" @click="validate">
-Espere...
-</v-btn>
+            Espere...
+          </v-btn>
           <v-btn v-if="!proceso" :disabled="!valid" color="success" @click="validate">
-Actualizar
-</v-btn>
+            Actualizar
+          </v-btn>
         </v-form>
       </v-card-text>
     </v-card>
@@ -61,14 +61,20 @@ import { Action, Getter } from "vuex-class";
       required: true
     }
   },
-  data: () => {return {
-    valid: true,
-    password_actual: "",
-    password_nuevo: "",
-    password_confirmation: ""
-  }}
+  data: () => {
+    return {
+      valid: true,
+      password_actual: "",
+      password_nuevo: "",
+      password_confirmation: ""
+    };
+  }
 })
 class EditarPerfil extends Vue {
+  $refs!: {
+    form: HTMLFormElement
+  }
+
   validate() {
     if (this.$refs.form.validate()) {
       this.refreshPass({
