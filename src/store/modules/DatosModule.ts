@@ -91,6 +91,8 @@ const mutations: MutationTree<State> = {
     state.usuarios = [];
     state.qr = null;
     state.verificaExisteUsuario = false;
+    state.administradores = [];
+    state.maestros = [];
   },
   [DatosTypes.mutations.SETQR]: (state, qr) => {
     state.qr = qr;

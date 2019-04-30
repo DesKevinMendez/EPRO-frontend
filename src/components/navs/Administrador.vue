@@ -49,7 +49,7 @@ export default {
         {
           iconClass: "lime white--text",
           title: "Usuarios",
-          icon: "attach_money",
+          icon: "supervisor_account",
           ruta: "/usuarios"
         }
       ]
