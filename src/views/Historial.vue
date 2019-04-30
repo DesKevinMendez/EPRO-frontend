@@ -22,9 +22,7 @@ class HistorialUser extends Vue {
   }
 
   mounted() {
-    if (this.getHistorial.length === 0) {
-      this.historial();
-    }
+    this.historial();
   }
 
   @Action(`datosModule/${DatosTypes.actions.HISTORIAL}`) historial: any;
