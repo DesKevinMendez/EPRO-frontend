@@ -1,9 +1,10 @@
 import { GetterTree, ActionTree, MutationTree } from "vuex";
-import { State } from "@/store/types/auth.ts";
-import store from "@/store/index.ts";
+// import { State } from "./store/types/auth";
+import { State } from "./../../store/types/Auth";
+import store from "./../../store/index";
 
 // importamos la varible cookie para poder asignar cookies
-import { crearCookie, eliminarCookie } from "@/utils/Cookies.ts";
+import { crearCookie, eliminarCookie } from "./../../utils/Cookies";
 
 // Establece los types de los modulos store
 import AuthTypes from "@/store/types/AuthTypes.ts";
