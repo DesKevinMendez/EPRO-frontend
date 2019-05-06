@@ -2,8 +2,8 @@
   <v-footer dark height="auto" class="m-5">
     <v-card class="flex" flat tile>
       <v-card-title class="blue">
-        <strong class="subheading">Get connected with us on social networks!</strong>
-        <v-spacer></v-spacer>
+        <strong class="subheading">Grupo 6</strong>
+        <v-spacer/>
       </v-card-title>
 
       <v-card-actions class="grey darken-3 justify-center">
@@ -15,6 +15,6 @@
 </template>
 <script>
 export default {
-  name: "footer"
+  name: "Footer"
 };
 </script>
