@@ -3,16 +3,16 @@
     <v-card>
       <TituloVCard titulo="Gráfica" body="Estadísticas de tus datos"/>
       <v-card-actions>
-        <v-spacer></v-spacer>
+        <v-spacer/>
         <v-btn icon @click="show = !show">
-          <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+          <v-icon>
+            {{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+          </v-icon>
         </v-btn>
       </v-card-actions>
       <v-slide-y-transition>
-        <v-responsive  v-show="show">
-
-          <canvas id="myChart" width="400" height="400"></canvas>
-
+        <v-responsive v-show="show">
+          <canvas id="myChart" width="400" height="400"/>
         </v-responsive>
       </v-slide-y-transition>
     </v-card>
@@ -22,15 +22,19 @@
 <script>
 import Chart from "chart.js";
 import TituloVCard from "@/components/partials/titulo-v-card.vue";
-export default {
-  data: () => ({
-    show: false
-  }),
-  components: { TituloVCard },
-  mounted() {
-    var ctx = document.getElementById("myChart");
 
-    var myChart = new Chart(ctx, {
+export default {
+  components: { TituloVCard },
+  data: () => {
+    return {
+      show: false
+    };
+
+},
+  mounted() {
+    const ctx = document.getElementById("myChart");
+
+    const myChart = new Chart(ctx, {
       type: "bar",
       data: {
         labels: [
@@ -44,7 +48,7 @@ export default {
         ],
         datasets: [
           {
-            label: "# of Votes",
+            label: "Total entradas al parqueo",
             data: [12, 10, 3, 5, 2, 3, 9],
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
