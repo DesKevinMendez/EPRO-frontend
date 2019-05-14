@@ -83,24 +83,22 @@ class login extends Vue {
   data() {
     return {
       user: {
-        nombre: "Kevin Ezequiel",
-        apellido: "Mendez Orellana",
-        carnet: "25-3992-2015",
+        nombre: "",
+        apellido: "",
+        carnet: "",
         email: "",
         password: "",
-        password_confirmation: "000000"
+        password_confirmation: ""
       },
       passwrodRules: [
-        (v: any) => !!v || "Password is required",
-        (v: any) =>
-          (v && v.length <= 6) || "Name must be less than 10 characters"
+        (v: any) => { return !!v || "Password requerido"; }
       ],
       emailRules: [
-        (v: any) => !!v || "E-mail is required",
-        (v: any) => /.+@.+/.test(v) || "E-mail must be valid"
+        (v: any) => { return !!v || "E-mail requerido"; },
+        (v: any) => { return /.+@.+/.test(v) || "E-mail no válido"; }
       ],
 
-      generalRules: [(v: any) => !!v || "This input is required"]
+      generalRules: [(v: any) => { return !!v || "Esta campo necesita ser rellenado"; }]
     };
   }
 
