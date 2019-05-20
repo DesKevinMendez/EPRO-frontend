@@ -17,12 +17,7 @@ import NuevoInvitado from "@/components/Visitas/InvitarNuevo.vue";
 
 @Component({
   name: "VisitasRec",
-  components: { Visita, NuevoInvitado },
-  methods: {
-    nuevoDatos(event) {
-      this.getVisitas();
-    }
-  }
+  components: { Visita, NuevoInvitado }
 })
 class VistasRecibidas extends Vue {
   data() {
@@ -42,6 +37,9 @@ class VistasRecibidas extends Vue {
     });
   }
 
+  nuevoDatos() {
+    this.getVisitas();
+  }
 }
 export default VistasRecibidas;
 </script>

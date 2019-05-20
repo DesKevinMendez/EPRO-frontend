@@ -12,14 +12,12 @@
           v-model="valid"
         >
           <v-text-field
-            :counter="10"
             :rules="nameRules"
             label="Nombre"
             required
             v-model="data.nombre"
           />
           <v-text-field
-            :counter="10"
             :rules="nameRules"
             label="Apellido"
             required
@@ -105,7 +103,7 @@ export default {
 
         http.post("nuevoInvitado", this.$data.data).then((res) => {
           if (res.status === 200) {
-            this.$emit("datosInvitados", this.$data.data);
+            this.$emit("datosInvitados");
             this.$data.data.nombre = "";
             this.$data.data.apellido = "";
             this.$data.data.email = "";
