@@ -1,9 +1,9 @@
 <template>
   <v-layout row wrap class="mt-4">
-    <v-flex xs9>
+    <v-flex xs12 md9 sm8>
       <Visita :visitas="infoInvitados"/>
     </v-flex>
-    <v-flex xs3>
+    <v-flex xs12 md3 sm4>
       <NuevoInvitado @datosInvitados="nuevoDatos"/>
     </v-flex>
   </v-layout>
