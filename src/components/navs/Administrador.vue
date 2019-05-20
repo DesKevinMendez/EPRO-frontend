@@ -48,6 +48,12 @@ export default {
         },
         {
           iconClass: "lime white--text",
+          title: "Visitas",
+          icon: "how_to_reg",
+          ruta: "/visitas"
+        },
+        {
+          iconClass: "lime white--text",
           title: "Usuarios",
           icon: "supervisor_account",
           ruta: "/usuarios"

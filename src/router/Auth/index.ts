@@ -39,6 +39,14 @@ export default {
     },
     meta: { Auth: true, title: "Aranceles" }
   },
+  visitas: {
+    path: "/visitas",
+    name: "visitas",
+    component: () => {
+      return import(/* webpackChunkName: "about" */ "@/views/Visitas.vue");
+    },
+    meta: { Auth: true, title: "Visitas" }
+  },
   usuarios: {
     path: "/usuarios",
     name: "usuarios",
